@@ -1,0 +1,25 @@
+{
+  "name": "redditslider",
+  "version": "1.0.0",
+  "description": "Auto viewer for Reddit",
+  "scripts": {
+    "start": "node build/bin/start.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jingyuyao/redditslider.git"
+  },
+  "author": "Jingyu Yao",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/jingyuyao/redditslider/issues"
+  },
+  "dependencies": {
+    "express": "^4.13.4",
+    "gulp": "^3.9.1",
+    "gulp-coffee": "^2.3.2",
+    "gulp-util": "^3.0.7",
+    "pug": "^2.0.0-alpha7"
+  },
+  "devDependencies": {}
+}
