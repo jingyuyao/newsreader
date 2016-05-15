@@ -5,6 +5,7 @@ var gutil = require('gulp-util');
 var paths = {
     buildRoot: './build/',
     coffee: './src/**/*.coffee',
+    staticContent: './src/**/!(*.coffee)'
 };
 
 gulp.task('coffee', function() {
@@ -13,8 +14,14 @@ gulp.task('coffee', function() {
         .pipe(gulp.dest(paths.buildRoot));
 });
 
-gulp.task('watch', function() {
-    gulp.watch(paths.coffee, ['coffee']);
+gulp.task('static', function() {
+    gulp.src(paths.staticContent)
+        .pipe(gulp.dest(paths.buildRoot));
 });
 
-gulp.task('default', ['coffee']);
+gulp.task('watch', function() {
+    gulp.watch(paths.coffee, ['coffee']);
+    gulp.watch(paths.staticContent, ['static']);
+});
+
+gulp.task('default', ['coffee', 'static']);
