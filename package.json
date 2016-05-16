@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Auto viewer for Reddit",
   "scripts": {
-    "start": "node build/bin/start.js"
+    "start": "node build/server.js"
   },
   "repository": {
     "type": "git",
@@ -15,11 +15,13 @@
     "url": "https://github.com/jingyuyao/redditslider/issues"
   },
   "dependencies": {
+    "del": "^2.2.0",
     "express": "^4.13.4",
     "gulp": "^3.9.1",
     "gulp-coffee": "^2.3.2",
     "gulp-util": "^3.0.7",
-    "pug": "^2.0.0-alpha7"
+    "pug": "^2.0.0-alpha7",
+    "requirejs": "^2.2.0"
   },
   "devDependencies": {}
 }

@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var coffee = require('gulp-coffee');
 var gutil = require('gulp-util');
+var del = require('del');
 
 var paths = {
     buildRoot: './build/',
@@ -19,9 +20,13 @@ gulp.task('static', function() {
         .pipe(gulp.dest(paths.buildRoot));
 });
 
+gulp.task('clean', function() {
+    del(['build/']);
+});
+
 gulp.task('watch', function() {
     gulp.watch(paths.coffee, ['coffee']);
     gulp.watch(paths.staticContent, ['static']);
 });
 
-gulp.task('default', ['coffee', 'static']);
+gulp.task('default', ['clean', 'coffee', 'static']);
