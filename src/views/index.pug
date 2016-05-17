@@ -5,6 +5,7 @@ html
     link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
     link(rel='stylesheet', href='css/lib/material.min.css')
     link(rel='stylesheet', href='css/app.css')
+    script(src='js/lib/fetch.js')
     script(src='js/lib/require.js', data-main='js/app')
 
   body
@@ -13,13 +14,13 @@ html
         span Wat
       .content
         .master-panel
-          // ko foreach: rows
+          // ko foreach: posts
           .row
             span.title(data-bind='text: title')
           // /ko
 
         .detail-panel
-          // ko with: highlighted
+          // ko with: selectedPost
           .title(data-bind='text: title')
           // /ko
       .footer

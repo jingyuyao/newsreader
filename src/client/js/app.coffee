@@ -2,17 +2,15 @@ requirejs.config
     baseUrl: 'js/lib'
     paths:
         api: '../api'
+        models: '../models'
 
-requirejs ['domReady', 'knockout', 'api/reddit'],
-    (domReady, ko, Reddit) ->
+requirejs ['domReady', 'knockout', 'api/reddit', 'models/viewmodel'],
+    (domReady, ko, Reddit, ViewModel) ->
         reddit = new Reddit()
-        reddit.hi()
+        viewModel = new ViewModel()
+
+        reddit.frontPage().then (posts) ->
+            viewModel.posts posts
 
         domReady ->
-            ko.applyBindings
-                rows: [
-                    {title: 'test1'}
-                    {title: 'test2'}
-                ]
-                highlighted:
-                    title: 'test1'
+            ko.applyBindings viewModel
