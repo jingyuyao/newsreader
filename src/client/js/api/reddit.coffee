@@ -4,10 +4,9 @@ define ['underscore', 'models/post'], (_, Post) ->
         response.json()
 
     class Reddit
-        @baseUrl = 'https://www.reddit.com/'
+        @baseUrl = 'https://www.reddit.com'
         frontPage: ->
-            fetch("#{Reddit.baseUrl}.json").then(toJson).then (json) ->
+            fetch("#{Reddit.baseUrl}/.json").then(toJson).then (json) ->
                 rawPosts = json.data.children
                 _.map rawPosts, (rawPost) ->
-                    new Post rawPost.data.title
-
+                    new Post rawPost.data.title, rawPost.data.url
