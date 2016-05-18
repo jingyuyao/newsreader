@@ -10,7 +10,10 @@ requirejs ['domReady', 'knockout', 'api/reddit', 'models/viewmodel'],
         viewModel = new ViewModel()
 
         reddit.frontPage().then (posts) ->
-            viewModel.posts posts
+            viewModel.loadPosts posts
 
         domReady ->
             ko.applyBindings viewModel
+            setInterval ->
+                viewModel.nextPost()
+            , 1000

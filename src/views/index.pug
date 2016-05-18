@@ -4,15 +4,16 @@ html
     link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700', type='text/css')
     link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
     link(rel='stylesheet', href='css/lib/material.min.css')
-    link(rel='stylesheet', href='css/app.css')
+    link(rel='stylesheet', href='css/all.css')
     script(src='js/lib/fetch.js')
     script(src='js/lib/require.js', data-main='js/app')
 
   body
     .container
-      .header
-        span Wat
-      .content
+      .header(data-bind='with: header')
+        span(data-bind='text: title')
+
+      .content(data-bind='with: content')
         .master-panel
           // ko foreach: posts
           .row
@@ -23,5 +24,6 @@ html
           // ko with: selectedPost
           .title(data-bind='text: title')
           // /ko
-      .footer
-        span Wat
+
+      .footer(data-bind='with: footer')
+        span(data-bind='text: title')

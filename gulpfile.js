@@ -3,9 +3,11 @@ var coffee = require('gulp-coffee');
 var sass = require('gulp-sass');
 var gutil = require('gulp-util');
 var del = require('del');
+var concat = require('gulp-concat');
 
 var paths = {
     buildRoot: './build/',
+    buildCssRoot: './build/client/css/',
     coffee: './src/**/*.coffee',
     sass: './src/**/*.scss',
     staticContent: [
@@ -26,7 +28,8 @@ gulp.task('coffee', function() {
 gulp.task('sass', function() {
     gulp.src(paths.sass)
         .pipe(sass()).on('error', gutil.log)
-        .pipe(gulp.dest(paths.buildRoot));
+        .pipe(concat('all.css'))
+        .pipe(gulp.dest(paths.buildCssRoot));
 });
 
 gulp.task('static', function() {

@@ -12,7 +12,7 @@ body {
     align-items: center;
     background: red;
     display: flex;
-    justicy-content: space-between;
+    justify-content: center;
     height: 10%;
   }
   
@@ -38,6 +38,10 @@ body {
     }
 
     .detail-panel {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       width: 30%;
 
       .title {
@@ -49,7 +53,7 @@ body {
     align-items: center;
     background: green;
     display: flex;
-    justicy-content: space-between;
+    justify-content: center;
     height: 10%;
   }
 }
