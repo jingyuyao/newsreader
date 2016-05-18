@@ -2,9 +2,9 @@ requirejs.config
     baseUrl: 'js/lib'
     paths:
         api: '../api'
-        models: '../models'
+        model: '../model'
 
-requirejs ['domReady', 'knockout', 'api/reddit', 'models/viewmodel'],
+requirejs ['domReady', 'knockout', 'api/reddit', 'model/viewmodel'],
     (domReady, ko, Reddit, ViewModel) ->
         reddit = new Reddit()
         viewModel = new ViewModel()

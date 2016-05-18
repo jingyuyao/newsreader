@@ -32,6 +32,11 @@ define ['knockout'], (ko) ->
 
         loadPosts: (posts) =>
             @allPosts posts
+            @resetPage()
+
+        resetPage: =>
+            @currentPage 0
+            @selectedPostOffset 0
 
         nextPost: =>
             if @isLastRow()
