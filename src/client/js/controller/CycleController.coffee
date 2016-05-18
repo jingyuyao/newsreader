@@ -1,6 +1,6 @@
 define [], ->
     class Controller
-        constructor: (@viewmodel) ->
+        constructor: (@viewModel) ->
             # Configs
             @perPostDuration = 1000
 

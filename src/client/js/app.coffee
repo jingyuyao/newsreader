@@ -11,8 +11,7 @@ requirejs ['domReady', 'knockout', 'api/Reddit', 'model/ViewModel', 'controller/
         viewModel = new ViewModel()
         cycleController = new CycleController viewModel
 
-        reddit.frontPage().then (posts) ->
-            viewModel.loadPosts posts
+        reddit.frontPage().then viewModel.loadPosts
 
         domReady ->
             ko.applyBindings viewModel
