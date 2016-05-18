@@ -1,4 +1,4 @@
-define ['underscore', 'model/post'], (_, Post) ->
+define ['underscore', 'model/Post'], (_, Post) ->
     # Helper piper
     toJson = (response) ->
         response.json()

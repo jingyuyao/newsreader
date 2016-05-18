@@ -3,17 +3,17 @@ requirejs.config
     paths:
         api: '../api'
         model: '../model'
+        controller: '../controller'
 
-requirejs ['domReady', 'knockout', 'api/reddit', 'model/viewmodel'],
-    (domReady, ko, Reddit, ViewModel) ->
+requirejs ['domReady', 'knockout', 'api/Reddit', 'model/ViewModel', 'controller/CycleController'],
+    (domReady, ko, Reddit, ViewModel, CycleController) ->
         reddit = new Reddit()
         viewModel = new ViewModel()
+        cycleController = new CycleController viewModel
 
         reddit.frontPage().then (posts) ->
             viewModel.loadPosts posts
 
         domReady ->
             ko.applyBindings viewModel
-            setInterval ->
-                viewModel.nextPost()
-            , 1000
+            cycleController.start()
