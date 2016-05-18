@@ -10,29 +10,29 @@ body {
 
   .header {
     align-items: center;
-    background: red;
     display: flex;
     justify-content: center;
     height: 10%;
   }
   
   .content {
-    background: blue;
     display: flex;
     height: 80%;
 
     .master-panel {
-      display: flex;
-      flex-direction: column;
-      width: 70%;
+      width: 50%;
 
-      .row {
+      .mdl-list {
+        align-items: center;
         display: flex;
-        flex: 1 1 auto;
-        height: 0;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
 
-        .title {
+        li {
           flex: 1 1 auto;
+          width: 100%;
         }
       }
     }
@@ -42,16 +42,17 @@ body {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: 30%;
+      width: 50%;
 
-      .title {
+      .mdl-card {
+        height: 100%;
+        width: 100%;
       }
     }
   }
   
   .footer {
     align-items: center;
-    background: green;
     display: flex;
     justify-content: center;
     height: 10%;
