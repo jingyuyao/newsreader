@@ -18,4 +18,3 @@ requirejs ['domReady', 'react-dom', 'api/Reddit', 'component/MainView'],
             reddit.frontPage().then (posts) ->
                 mainView.setState
                     posts: posts
-

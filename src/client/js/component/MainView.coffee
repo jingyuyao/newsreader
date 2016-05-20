@@ -12,5 +12,4 @@ define ['react', 'component/Post'], (React, Post) ->
                     title: post.title
                     url: post.url
 
-
     React.createFactory MainView
