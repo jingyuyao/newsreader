@@ -1,15 +1,19 @@
-define ['react', 'component/Post'], (React, Post) ->
+define ['react', 'component/PostListViewer'], (React, PostListViewer) ->
     MainView = React.createClass
         displayName: 'MainView'
+
+        render: ->
+            postListViewer = PostListViewer
+                posts: @state.posts
+
+            React.DOM.div {}, postListViewer
+
         getInitialState: ->
             posts: []
-        render: ->
-            # React.DOM.div is just a regular component with
-            # first param being a property map and a variadic
-            # style of child elements
-            React.DOM.div null, @state.posts.map (post) ->
-                Post
-                    title: post.title
-                    url: post.url
+
+        componentDidMount: ->
+            @props.api.frontPage().then (posts) =>
+                @setState
+                    posts: posts
 
     React.createFactory MainView

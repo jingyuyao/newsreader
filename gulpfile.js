@@ -6,16 +6,16 @@ var concat = require('gulp-concat');
 var del = require('del');
 
 var paths = {
-    buildRoot: './build/',
-    buildCssRoot: './build/client/css/',
-    coffee: './src/**/*.coffee',
-    sass: './src/**/*.scss',
+    buildRoot: 'build/',
+    buildCssRoot: 'build/client/css/',
+    coffee: 'src/**/*.coffee',
+    sass: 'src/**/*.scss',
     staticContent: [
         // Everything in src
-        './src/**/*',
+        'src/**/*',
         // except
-        '!./src/**/*.coffee',
-        '!./src/**/*.scss'
+        '!src/**/*.coffee',
+        '!src/**/*.scss'
     ]
 };
 
