@@ -2,8 +2,8 @@ var gulp = require('gulp');
 var coffee = require('gulp-coffee');
 var sass = require('gulp-sass');
 var gutil = require('gulp-util');
-var del = require('del');
 var concat = require('gulp-concat');
+var del = require('del');
 
 var paths = {
     buildRoot: './build/',
@@ -20,7 +20,7 @@ var paths = {
 };
 
 gulp.task('coffee', function() {
-    gulp.src(paths.coffee)
+    gulp.src(paths.coffee, {base: 'src'})
         .pipe(coffee()).on('error', gutil.log)
         .pipe(gulp.dest(paths.buildRoot));
 });
@@ -33,7 +33,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('static', function() {
-    gulp.src(paths.staticContent)
+    gulp.src(paths.staticContent, {base: 'src'})
         .pipe(gulp.dest(paths.buildRoot));
 });
 
@@ -47,4 +47,4 @@ gulp.task('watch', function() {
     gulp.watch(paths.staticContent, ['static']);
 });
 
-gulp.task('default', ['clean', 'coffee', 'sass', 'static']);
+gulp.task('default', ['coffee', 'sass', 'static']);
