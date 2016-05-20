@@ -4,30 +4,9 @@ html
     link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700', type='text/css')
     link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
     link(rel='stylesheet', href='css/lib/material.min.css')
-    link(rel='stylesheet', href='css/all.css')
+    // link(rel='stylesheet', href='css/all.css')
     script(src='js/lib/fetch.js')
     script(src='js/lib/require.js', data-main='js/app')
 
   body
-    .container
-      .header(data-bind='with: header')
-        span(data-bind='text: title')
-
-      .content(data-bind='with: content')
-        .master-panel
-          .mdl-list
-            // ko foreach: posts
-            li.mdl-list__item
-              .mdl-list__item-primary-content(data-bind='text: title')
-            // /ko
-
-        .detail-panel
-          // ko with: selectedPost
-          .mdl-card.mdl-shadow--2dp
-            .mdl-card__title
-              .mdl-card__title-text(data-bind='text: title')
-            .mdl-card__supporting-text(data-bind='text: url')
-          // /ko
-
-      .footer(data-bind='with: footer')
-        span(data-bind='text: title')
+    #container

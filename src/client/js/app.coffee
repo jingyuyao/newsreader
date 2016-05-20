@@ -2,17 +2,20 @@ requirejs.config
     baseUrl: 'js/lib'
     paths:
         api: '../api'
-        model: '../model'
-        controller: '../controller'
+        component: '../component'
 
-requirejs ['domReady', 'knockout', 'api/Reddit', 'model/ViewModel', 'controller/CycleController'],
-    (domReady, ko, Reddit, ViewModel, CycleController) ->
+requirejs ['domReady', 'react-dom', 'api/Reddit', 'component/MainView'],
+    (domReady, ReactDOM, Reddit, MainView) ->
         reddit = new Reddit()
-        viewModel = new ViewModel()
-        cycleController = new CycleController viewModel
-
-        reddit.frontPage().then viewModel.loadPosts
 
         domReady ->
-            ko.applyBindings viewModel
-            cycleController.start()
+            container = document.getElementById 'container'
+            # One thing to note here is that we do not have access
+            # to the setState function until the component is rendered.
+            # This means if we just do mainView = MainView() then mainView
+            # will not have access to setStates
+            mainView = ReactDOM.render MainView(), container
+            reddit.frontPage().then (posts) ->
+                mainView.setState
+                    posts: posts
+
