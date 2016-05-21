@@ -41,7 +41,7 @@ gulp.task('clean', function() {
     del(['build/']);
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', ['default'], function() {
     gulp.watch(paths.coffee, ['coffee']);
     gulp.watch(paths.sass, ['sass']);
     gulp.watch(paths.staticContent, ['static']);

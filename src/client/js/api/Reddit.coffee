@@ -8,6 +8,6 @@ define [], ->
         frontPage: ->
             fetch("#{Reddit.baseUrl}/.json").then(toJson).then (json) ->
                 json.data.children.map (child) ->
-                    id: child.data.id
+                    key: child.data.id
                     title: child.data.title
                     url: child.data.url
