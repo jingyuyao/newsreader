@@ -8,6 +8,4 @@ define ['api/BaseApi'], (BaseApi) ->
                 .then @toJson
                 .then (json) ->
                     json.data.children.map (child) ->
-                        id: child.data.id
-                        title: child.data.title
-                        url: child.data.url
+                        child.data

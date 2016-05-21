@@ -12,7 +12,7 @@ define ['react', 'component/PostListItem'], (React, PostListItem) ->
                     index: i
                     onClick: @handleClick
 
-            div {className: 'post-list'}, items
+            div {className: 'mdl-list post-list'}, items
 
         getDefaultProps: ->
             posts: []

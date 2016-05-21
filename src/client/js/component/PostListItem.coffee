@@ -6,13 +6,17 @@ define ['react'], (React) ->
 
         render: ->
             title = span {className: 'title'}, @props.post.title
-            url = span {className: 'url'}, @props.post.url
+            url = span {className: 'mdl-list__item-text-body url'}, @props.post.url
+
+            primaryContent = span {className: 'mdl-list__item-primary-content'}, title, url
 
             properties =
-                className: 'item'
+                className: 'mdl-list__item
+                    mdl-list__item--three-line
+                    item'
                 onClick: @onClick
 
-            div properties, title, url
+            div properties, primaryContent
 
         getDefaultProps: ->
             index: 0

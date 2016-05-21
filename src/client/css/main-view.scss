@@ -18,24 +18,13 @@
     height: 0;
 
     .post-list {
-      display: flex;
       flex: 1 1 auto;
-      flex-direction: column;
       overflow-y: scroll;
       width: 0;
-
-      .item {
-        display: flex;
-        flex-direction: column;
-      }
     }
 
     .post-detail {
-      align-items: center;
-      display: flex;
       flex: 1 1 auto;
-      flex-direction: column;
-      justify-content: center;
       width: 0;
     }
   }
