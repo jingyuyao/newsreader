@@ -1,60 +1,11 @@
-body {
-  height: 100%;
-}
+@import 'main-view';
 
-.container {
-  display: flex;
-  flex-direction: column;
+body {
   height: 100%;
   width: 100%;
 
-  .header {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    height: 10%;
-  }
-  
-  .content {
-    display: flex;
-    height: 80%;
-
-    .master-panel {
-      width: 50%;
-
-      .mdl-list {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 100%;
-        width: 100%;
-
-        li {
-          flex: 1 1 auto;
-          width: 100%;
-        }
-      }
-    }
-
-    .detail-panel {
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      width: 50%;
-
-      .mdl-card {
-        height: 100%;
-        width: 100%;
-      }
-    }
-  }
-  
-  .footer {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    height: 10%;
+  #container {
+    height: 100%;
+    width: 100%;
   }
 }

@@ -1,14 +1,29 @@
-define ['react', 'component/PostListViewer'], (React, PostListViewer) ->
-    MainView = React.createClass
+define ['react', 'component/PostList', 'component/PostDetail'], (React, PostList, PostDetail) ->
+    {div} = React.DOM
+
+    React.createFactory React.createClass
         displayName: 'MainView'
 
         render: ->
-            postListViewer = PostListViewer
+            postList = PostList
                 posts: @state.posts
+                selectedIndex: @state.selectedIndex
+                selectedChangedTo: @selectedChangedTo
 
-            React.DOM.div {}, postListViewer
+            selectedPost = @state.posts[@state.selectedIndex]
+            postDetailData = {}
+            (postDetailData.post = selectedPost) if selectedPost?
+
+            postDetail = PostDetail postDetailData
+
+            header = div {className: 'header'}
+            content = div {className: 'content'}, postList, postDetail
+            footer = div {className: 'footer'}
+
+            div {className: 'main-view'}, header, content, footer
 
         getInitialState: ->
+            selectedIndex: 0
             posts: []
 
         componentDidMount: ->
@@ -16,4 +31,6 @@ define ['react', 'component/PostListViewer'], (React, PostListViewer) ->
                 @setState
                     posts: posts
 
-    React.createFactory MainView
+        selectedChangedTo: (index) ->
+            @setState
+                selectedIndex: index

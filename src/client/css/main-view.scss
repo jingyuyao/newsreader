@@ -1,0 +1,50 @@
+.main-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  .header {
+    align-items: center;
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: center;
+    height: 0;
+  }
+  
+  .content {
+    display: flex;
+    flex: 8 1 auto;
+    height: 0;
+
+    .post-list {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
+      overflow-y: scroll;
+      width: 0;
+
+      .item {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .post-detail {
+      align-items: center;
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
+      justify-content: center;
+      width: 0;
+    }
+  }
+  
+  .footer {
+    align-items: center;
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: center;
+    height: 0;
+  }
+}

@@ -21,15 +21,19 @@ var paths = {
 
 gulp.task('coffee', function() {
     gulp.src(paths.coffee, {base: 'src'})
-        .pipe(coffee()).on('error', gutil.log)
+        .pipe(
+            coffee({
+                // No need to wrap files in anonymous function
+                // since we are using requirejs
+                bare: true
+            }).on('error', gutil.log))
         .pipe(gulp.dest(paths.buildRoot));
 });
 
 gulp.task('sass', function() {
     gulp.src(paths.sass)
-        .pipe(sass()).on('error', gutil.log)
-        .pipe(concat('all.css'))
-        .pipe(gulp.dest(paths.buildCssRoot));
+        .pipe(sass().on('error', gutil.log))
+        .pipe(gulp.dest(paths.buildRoot));
 });
 
 gulp.task('static', function() {
