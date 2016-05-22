@@ -3,17 +3,9 @@ html
   head
     // Global styles
     link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700', type='text/css')
-    link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
-    link(rel='stylesheet', href='css/lib/material.min.css')
-
-    // Custom styles
-    link(rel='stylesheet', href='css/app.css')
-
-    // Shims
-    script(src='js/lib/shims/fetch.js')
-
-    // App scripts
-    script(src='js/lib/require.js', data-main='js/app')
 
   body
     #container
+
+    // CSS and JS
+    script(src='bundle.js')

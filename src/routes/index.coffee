@@ -1,8 +1,8 @@
-define ['express'], (express) ->
-    express = require 'express'
-    router = express.Router()
+express = require 'express'
 
-    router.get '/', (req, res) ->
-        res.render 'index'
+router = express.Router()
 
-    router
+router.get '/', (req, res) ->
+    res.render 'index'
+
+module.exports = router

@@ -1,54 +1,76 @@
 var gulp = require('gulp');
 var coffee = require('gulp-coffee');
-var sass = require('gulp-sass');
 var gutil = require('gulp-util');
-var concat = require('gulp-concat');
+var webpack = require('webpack-stream');
 var del = require('del');
 
 var paths = {
+    serverCoffee: [
+        'src/**/*.coffee',
+        // Client build is managed by webpack
+        '!src/client/**/*'
+    ],
+    clientEntry: 'src/client/bundle.coffee',
     buildRoot: 'build/',
-    buildCssRoot: 'build/client/css/',
-    coffee: 'src/**/*.coffee',
-    sass: 'src/**/*.scss',
-    staticContent: [
+    clientBuildRoot: 'build/client/',
+    serverStatic: [
         // Everything in src
         'src/**/*',
         // except
+        '!src/client/**/*',
         '!src/**/*.coffee',
         '!src/**/*.scss'
     ]
 };
 
-gulp.task('coffee', function() {
-    gulp.src(paths.coffee, {base: 'src'})
-        .pipe(
-            coffee({
-                // No need to wrap files in anonymous function
-                // since we are using requirejs
-                bare: true
-            }).on('error', gutil.log))
+clientTask = function(watch) {
+    gulp.src(paths.clientEntry)
+        .pipe(webpack({
+            watch: watch,
+            output: {
+                filename: 'bundle.js'
+            },
+            module: {
+                loaders: [
+                    { test: /\.coffee$/, loader: 'coffee' },
+                    { test: /\.scss$/, loaders: ['style', 'css', 'sass'] }
+                ]
+            }
+        }).on('error', gutil.log))
+        .pipe(gulp.dest(paths.clientBuildRoot));
+}
+
+gulp.task('client', function() {
+    clientTask(false);
+});
+
+gulp.task('client:watch', function() {
+    clientTask(true);
+});
+
+gulp.task('server', function() {
+    gulp.src(paths.serverCoffee, {base: 'src'})
+        .pipe(coffee().on('error', gutil.log))
         .pipe(gulp.dest(paths.buildRoot));
 });
 
-gulp.task('sass', function() {
-    gulp.src(paths.sass)
-        .pipe(sass().on('error', gutil.log))
-        .pipe(gulp.dest(paths.buildRoot));
+gulp.task('server:watch', function() {
+    gulp.watch(paths.serverCoffee, ['server']);
 });
 
 gulp.task('static', function() {
-    gulp.src(paths.staticContent, {base: 'src'})
+    gulp.src(paths.serverStatic, {base: 'src'})
         .pipe(gulp.dest(paths.buildRoot));
+});
+
+gulp.task('static:watch', function() {
+    gulp.watch(paths.serverStatic, ['static']);
 });
 
 gulp.task('clean', function() {
     del(['build/']);
 });
 
-gulp.task('watch', ['default'], function() {
-    gulp.watch(paths.coffee, ['coffee']);
-    gulp.watch(paths.sass, ['sass']);
-    gulp.watch(paths.staticContent, ['static']);
-});
+gulp.task('watch', ['server:watch', 'static:watch', 'client:watch']);
 
-gulp.task('default', ['coffee', 'sass', 'static']);
+gulp.task('default', ['server', 'static', 'client']);

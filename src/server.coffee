@@ -1,20 +1,17 @@
-requirejs = require 'requirejs'
+express = require 'express'
+index = require './routes/index'
 
-requirejs.config
-    nodeRequire: require
+app = express()
 
-requirejs ['express', 'routes/index'], (express, index) ->
-    app = express()
+# Config
+app.set 'view engine', 'pug'
+app.set 'views', __dirname + '/views'
 
-    # Config
-    app.set 'view engine', 'pug'
-    app.set 'views', __dirname + '/views'
+# Static files
+app.use express.static __dirname + '/client'
 
-    # Static files
-    app.use express.static __dirname + '/client'
+# Routes
+app.use '/', index
 
-    # Routes
-    app.use '/', index
-
-    app.listen 3000, ->
-        console.log "Listening on port 3000"
+app.listen 3000, ->
+    console.log "Listening on port 3000"
