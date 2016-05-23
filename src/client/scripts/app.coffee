@@ -4,10 +4,7 @@ ReactDOM = require 'react-dom'
 Reddit = require './apis/Reddit.coffee'
 mainViewFactory = require './components/mainView.coffee'
 
-reddit = new Reddit()
-
-container = document.getElementById 'container'
 mainView = mainViewFactory
-    api: reddit
+    api: new Reddit()
 
-ReactDOM.render mainView, container
+ReactDOM.render mainView, document.getElementById 'container'
