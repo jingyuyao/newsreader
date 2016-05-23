@@ -1,7 +1,7 @@
 React = require 'react'
 ReactDOM = require 'react-dom'
-Reddit = require './api/Reddit.coffee'
-MainView = require './component/MainView.coffee'
+Reddit = require './apis/Reddit.coffee'
+MainView = require './components/MainView.coffee'
 
 reddit = new Reddit()
 
