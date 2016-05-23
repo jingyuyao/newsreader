@@ -1,14 +1,14 @@
 React = require 'react'
-PostListItem = require './PostListItem.coffee'
-
 {div} = React.DOM
+
+postListItemFactory = require './postListItem.coffee'
 
 PostList = React.createClass
     displayName: 'PostList'
 
     render: ->
         items = @props.posts.map (post, i) =>
-            PostListItem
+            postListItemFactory
                 post: post
                 key: post.id
                 index: i

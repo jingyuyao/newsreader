@@ -1,5 +1,4 @@
 React = require 'react'
-
 {div, span} = React.DOM
 
 PostListItem = React.createClass

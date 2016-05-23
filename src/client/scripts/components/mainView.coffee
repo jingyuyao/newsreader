@@ -1,14 +1,14 @@
 React = require 'react'
-PostList = require './PostList.coffee'
-PostDetail = require './PostDetail.coffee'
-
 {div} = React.DOM
+
+postListFactory = require './postList.coffee'
+postDetailFactory = require './postDetail.coffee'
 
 MainView = React.createClass
     displayName: 'MainView'
 
     render: ->
-        postList = PostList
+        postList = postListFactory
             posts: @state.posts
             selectedIndex: @state.selectedIndex
             selectedChangedTo: @selectedChangedTo
@@ -17,7 +17,7 @@ MainView = React.createClass
         postDetailData = {}
         (postDetailData.post = selectedPost) if selectedPost?
 
-        postDetail = PostDetail postDetailData
+        postDetail = postDetailFactory postDetailData
 
         header = div {className: 'header'}
         content = div {className: 'content'}, postList, postDetail
