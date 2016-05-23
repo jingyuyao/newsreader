@@ -1,3 +1,3 @@
 # Bundles together coffee and scss
-require './scss/app.scss'
-require './coffee/app.coffee'
+require './styles/app.scss'
+require './scripts/app.coffee'
