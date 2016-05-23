@@ -1,12 +1,12 @@
 var gulp = require('gulp');
-var coffee = require('gulp-coffee');
+var babel = require('gulp-babel');
 var gutil = require('gulp-util');
 var webpack = require('webpack-stream');
 var del = require('del');
 
 var paths = {
-    serverCoffee: [
-        'src/**/*.coffee',
+    serverSrc: [
+        'src/**/*.js',
         // Client build is managed by webpack
         '!src/client/**/*'
     ],
@@ -18,7 +18,7 @@ var paths = {
         'src/**/*',
         // except
         '!src/client/**/*',
-        '!src/**/*.coffee',
+        '!src/**/*.js',
         '!src/**/*.scss'
     ]
 };
@@ -49,13 +49,13 @@ gulp.task('client:watch', function() {
 });
 
 gulp.task('server', function() {
-    gulp.src(paths.serverCoffee, {base: 'src'})
-        .pipe(coffee().on('error', gutil.log))
+    gulp.src(paths.serverSrc, {base: 'src'})
+        .pipe(babel().on('error', gutil.log))
         .pipe(gulp.dest(paths.buildRoot));
 });
 
 gulp.task('server:watch', function() {
-    gulp.watch(paths.serverCoffee, ['server']);
+    gulp.watch(paths.serverSrc, ['server']);
 });
 
 gulp.task('static', function() {
