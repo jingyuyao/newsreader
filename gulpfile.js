@@ -10,7 +10,7 @@ var paths = {
         // Client build is managed by webpack
         '!src/client/**/*'
     ],
-    clientEntry: 'src/client/bundle.coffee',
+    clientEntry: 'src/client/bundle.js',
     buildRoot: 'build/',
     clientBuildRoot: 'build/client/',
     serverStatic: [
@@ -32,8 +32,8 @@ clientTask = function(watch) {
             },
             module: {
                 loaders: [
-                    { test: /\.coffee$/, loader: 'coffee' },
-                    { test: /\.scss$/, loaders: ['style', 'css', 'sass'] }
+                    { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
+                    { test: /\.scss$/, exclude: /node_modules/, loaders: ['style', 'css', 'sass'] }
                 ]
             }
         }).on('error', gutil.log))
