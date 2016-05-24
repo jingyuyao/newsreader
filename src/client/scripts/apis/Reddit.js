@@ -10,9 +10,7 @@ class Reddit extends BaseApi {
         return fetch(`${this.baseUrl}.json`)
             .then(this.checkStatus)
             .then(this.toJson)
-            .then((json) => {
-                return json.data.children.map((child) => child.data);
-            });
+            .then((json) => json.data.children.map((child) => child.data));
     }
 }
 
