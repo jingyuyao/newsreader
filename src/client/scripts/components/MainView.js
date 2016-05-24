@@ -25,7 +25,9 @@ class MainView extends React.Component {
 
         return (
             <div className='main-view'>
-                <div className='header'></div>
+                <div className='header'>
+                    hi
+                </div>
                 <div className='content'>
                     <PostList
                         posts={this.state.posts}
@@ -36,7 +38,9 @@ class MainView extends React.Component {
                         post={selectedPost}
                     />
                 </div>
-                <div className='footer'></div>
+                <div className='footer'>
+                    lo
+                </div>
             </div>
         );
     }

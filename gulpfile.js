@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var babel = require('gulp-babel');
+var plumber = require('gulp-plumber');
 var gutil = require('gulp-util');
 var webpack = require('webpack-stream');
 var del = require('del');
@@ -25,7 +26,11 @@ var paths = {
 
 clientTask = function(watch) {
     gulp.src(paths.clientEntry)
+        .pipe(plumber())
         .pipe(webpack({
+            resolve: {
+                extensions: ['', '.js', '.scss']
+            },
             watch: watch,
             output: {
                 filename: 'bundle.js'
@@ -50,6 +55,7 @@ gulp.task('client:watch', function() {
 
 gulp.task('server', function() {
     gulp.src(paths.serverSrc, {base: 'src'})
+        .pipe(plumber())
         .pipe(babel().on('error', gutil.log))
         .pipe(gulp.dest(paths.buildRoot));
 });
@@ -60,6 +66,7 @@ gulp.task('server:watch', function() {
 
 gulp.task('static', function() {
     gulp.src(paths.serverStatic, {base: 'src'})
+        .pipe(plumber())
         .pipe(gulp.dest(paths.buildRoot));
 });
 
