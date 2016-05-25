@@ -26,7 +26,7 @@ class MainView extends React.Component {
         return (
             <div className='main-view'>
                 <div className='header'>
-                    hi
+                    <h1>Title</h1>
                 </div>
                 <div className='content'>
                     <PostList
@@ -39,7 +39,7 @@ class MainView extends React.Component {
                     />
                 </div>
                 <div className='footer'>
-                    lo
+                    <h1>Footer</h1>
                 </div>
             </div>
         );

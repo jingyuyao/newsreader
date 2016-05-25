@@ -1,4 +1,5 @@
 import React from 'react';
+import Panel from 'muicss/lib/react/panel';
 
 class PostListItem extends React.Component {
     constructor(props) {
@@ -10,14 +11,14 @@ class PostListItem extends React.Component {
     render() {
         const post = this.props.post;
         return (
-            <div className='post-list-item'>
-                <span className='title'>
+            <Panel className='post-list-item'>
+                <h4 className='title'>
                     {post.title}
-                </span>
+                </h4>
                 <span className='url'>
                     {post.url}
                 </span>
-            </div>
+            </Panel>
         );
     }
 

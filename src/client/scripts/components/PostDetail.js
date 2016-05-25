@@ -6,9 +6,9 @@ class PostDetail extends React.Component {
         const post = this.props.post;
         return (
             <Panel className='post-detail'>
-                <span className='title'>
+                <h1 className='title'>
                     {post.title}
-                </span>
+                </h1>
                 <span className='url'>
                     {post.url}
                 </span>
