@@ -26,6 +26,7 @@
     "gulp-babel": "^6.1.2",
     "gulp-plumber": "^1.1.0",
     "gulp-util": "^3.0.7",
+    "muicss": "^0.6.0",
     "node-sass": "^3.7.0",
     "pug": "^2.0.0-alpha7",
     "react": "^15.1.0",

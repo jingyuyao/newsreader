@@ -37,8 +37,9 @@ clientTask = function(watch) {
             },
             module: {
                 loaders: [
-                    { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
-                    { test: /\.scss$/, exclude: /node_modules/, loaders: ['style', 'css', 'sass'] }
+                    { test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
+                    { test: /\.css$/, loaders: ['style', 'css'] },
+                    { test: /\.scss$/, loaders: ['style', 'css', 'sass'] }
                 ]
             }
         }).on('error', gutil.log))
