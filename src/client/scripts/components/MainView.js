@@ -1,7 +1,7 @@
 import React from 'react';
 
-import PostList from './PostList.js';
-import PostDetail from './PostDetail.js';
+import PostList from './PostList';
+import PostDetail from './PostDetail';
 
 class MainView extends React.Component {
     constructor(props) {

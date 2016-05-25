@@ -1,10 +1,19 @@
-./src/client is compiled and bundled using webpack. Every require must specify its extension so webpack loaders
-can process it.
+# News reader
 
-./src except ./src/client is compiled using standard gulp-coffee and thus require does not need to specify an extension.
+## Tech stack
 
-Coffeescript conventions:
-- One line object creation must be in curly braces: `a = {className: 'abc'}`
+- Primary languages: es6, scss, pug
+- Language plugins: jsx
+- Transpilers: babel (es2015, react)
+- Frameworks: express, react
+- Libraries: muicss
+- Tools: gulp, webpack
 
-Reactjs conventions:
-- Use null for no props
+## Directory structure
+
+- src/ - server root built by gulp-babel (excluding client/)
+  - client/ - static web root build by webpack
+    - scripts/ - application code written in es6 and jsx
+    - styles/ - all scss files
+  - routes/ - non-static path routing logic
+  - views/ - templates written in pug

@@ -1,4 +1,4 @@
-// Bundles together js and scss
+// Bundles together application components
 import 'muicss/lib/css/mui.min.css';
-import './styles/app.scss';
-import './scripts/app.js';
+import './styles/app';
+import './scripts/app';

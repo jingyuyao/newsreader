@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Reddit from './apis/Reddit.js';
-import MainView from './components/MainView.js';
+import Reddit from './apis/Reddit';
+import MainView from './components/MainView';
 
 const reddit = new Reddit();
 

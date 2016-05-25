@@ -1,4 +1,4 @@
-import BaseApi from './BaseApi.js';
+import BaseApi from './BaseApi';
 
 class Reddit extends BaseApi {
     constructor() {

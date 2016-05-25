@@ -6,19 +6,18 @@ var webpack = require('webpack-stream');
 var del = require('del');
 
 var paths = {
-    serverSrc: [
-        'src/**/*.js',
-        // Client build is managed by webpack
-        '!src/client/**/*'
-    ],
-    clientEntry: 'src/client/bundle.js',
     buildRoot: 'build/',
     clientBuildRoot: 'build/client/',
-    serverStatic: [
+
+    clientEntry: 'src/client/bundle.js',
+    serverJs: [
+        'src/**/*.js',
+        '!src/client/**/*'
+    ],
+    staticFiles: [
         // Everything in src
         'src/**/*',
         // except
-        '!src/client/**/*',
         '!src/**/*.js',
         '!src/**/*.scss'
     ]
@@ -55,24 +54,24 @@ gulp.task('client:watch', function() {
 });
 
 gulp.task('server', function() {
-    gulp.src(paths.serverSrc, {base: 'src'})
+    gulp.src(paths.serverJs, {base: 'src'})
         .pipe(plumber())
         .pipe(babel().on('error', gutil.log))
         .pipe(gulp.dest(paths.buildRoot));
 });
 
 gulp.task('server:watch', function() {
-    gulp.watch(paths.serverSrc, ['server']);
+    gulp.watch(paths.serverJs, ['server']);
 });
 
 gulp.task('static', function() {
-    gulp.src(paths.serverStatic, {base: 'src'})
+    gulp.src(paths.staticFiles, {base: 'src'})
         .pipe(plumber())
         .pipe(gulp.dest(paths.buildRoot));
 });
 
 gulp.task('static:watch', function() {
-    gulp.watch(paths.serverStatic, ['static']);
+    gulp.watch(paths.staticFiles, ['static']);
 });
 
 gulp.task('clean', function() {
