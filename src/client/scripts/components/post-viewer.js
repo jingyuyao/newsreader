@@ -1,7 +1,7 @@
 import React from 'react';
 import Panel from 'muicss/lib/react/panel';
 
-class PostDetail extends React.Component {
+class PostViewer extends React.Component {
     render() {
         const post = this.props.post;
         return (
@@ -17,4 +17,4 @@ class PostDetail extends React.Component {
     }
 }
 
-export default PostDetail;
+export default PostViewer;

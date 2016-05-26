@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PostListItem from './PostListItem';
+import PostListItem from './post-list-item';
 
 class PostList extends React.Component {
     constructor(props) {

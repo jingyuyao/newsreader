@@ -2,8 +2,8 @@ import React from 'react';
 import Appbar from 'muicss/lib/react/appbar';
 import Container from 'muicss/lib/react/container';
 
-import PostList from './PostList';
-import PostDetail from './PostDetail';
+import PostList from './post-list';
+import PostViewer from './post-viewer';
 
 class MainView extends React.Component {
     constructor(props) {
@@ -41,7 +41,7 @@ class MainView extends React.Component {
                             selectedIndex={this.state.selectedIndex}
                             selectedChangedTo={this.selectedChangedTo}
                         />
-                        <PostDetail
+                        <PostViewer
                             post={selectedPost}
                         />
                     </Container>

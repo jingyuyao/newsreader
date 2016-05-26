@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Reddit from './apis/Reddit';
-import MainView from './components/MainView';
+import Reddit from './apis/reddit';
+import MainView from './components/main-view';
 
 const reddit = new Reddit();
 
-ReactDOM.render(<MainView api={reddit} />, document.getElementById('app-container'));
+ReactDOM.render(<MainView api={reddit} />, document.getElementById('appContainer'));
