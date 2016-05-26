@@ -17,3 +17,14 @@
     - styles/ - all scss files
   - routes/ - non-static path routing logic
   - views/ - templates written in pug
+
+## Conventions
+
+### File naming
+
+Files should be lowercase with nouns separated by a dash.
+e.g. `hello-world.js`
+
+### HTML, Scss
+
+Element id and classes should be camelCase.
