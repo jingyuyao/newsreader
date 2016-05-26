@@ -1,4 +1,6 @@
 import React from 'react';
+import Appbar from 'muicss/lib/react/appbar';
+import Container from 'muicss/lib/react/container';
 
 import PostList from './PostList';
 import PostDetail from './PostDetail';
@@ -24,23 +26,31 @@ class MainView extends React.Component {
         const selectedPost = this.state.posts[this.state.selectedIndex] || {};
 
         return (
-            <div className='main-view'>
-                <div className='header'>
-                    <h1>Title</h1>
-                </div>
-                <div className='content'>
-                    <PostList
-                        posts={this.state.posts}
-                        selectedIndex={this.state.selectedIndex}
-                        selectedChangedTo={this.selectedChangedTo}
-                    />
-                    <PostDetail
-                        post={selectedPost}
-                    />
-                </div>
-                <div className='footer'>
-                    <h1>Footer</h1>
-                </div>
+            <div className='mainView'>
+                <header>
+                    <Appbar className='appbar'>
+                        <span className='mui--text-display1'>Title</span>
+                    </Appbar>
+                </header>
+                <main>
+                    {/* Buffer for fixed header */}
+                    <div className='mui--appbar-height'></div>
+                    <Container fluid={true} className='mainContainer'>
+                        <PostList
+                            posts={this.state.posts}
+                            selectedIndex={this.state.selectedIndex}
+                            selectedChangedTo={this.selectedChangedTo}
+                        />
+                        <PostDetail
+                            post={selectedPost}
+                        />
+                    </Container>
+                </main>
+                <footer>
+                    <Container fluid={true} className='footerContainer'>
+                        Hellooooooo
+                    </Container>
+                </footer>
             </div>
         );
     }

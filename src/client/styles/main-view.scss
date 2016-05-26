@@ -1,39 +1,55 @@
-.main-view {
-  display: flex;
-  padding: 8px;
-  flex: 1 1 auto;
-  flex-direction: column;
+.mainView {
+  $footerHeight: 100px;
 
-  .header {
-    align-items: center;
-    display: flex;
-    flex: 1 1 auto;
-    justify-content: center;
-    height: 0;
-  }
-  
-  .content {
-    display: flex;
-    flex: 8 1 auto;
-    height: 0;
+  /* Pass along min-height until main */
+  min-height: 100%;
 
-    .post-list {
-      flex: 1 1 auto;
-      overflow-y: scroll;
-      width: 0;
-    }
+  /* Fixed header */
+  header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
 
-    .post-detail {
-      flex: 1 1 auto;
-      width: 0;
+    .appbar {
+      align-items: center;
+      display: flex;
+      justify-content: center;
     }
   }
   
-  .footer {
-    align-items: center;
-    display: flex;
-    flex: 1 1 auto;
-    justify-content: center;
-    height: 0;
+  /* Main element takes up at least height
+   * of the window
+   */
+  main {
+    min-height: 100%;
+
+    // For sticky footer
+    margin-bottom: -$footerHeight;
+    padding-bottom: $footerHeight;
+
+    .mainContainer {
+      display: flex;
+      padding-top: 10px;
+
+      .post-list {
+        flex: 1 1 auto;
+        width: 0;
+      }
+
+      .post-detail {
+        margin-left: 10px;
+        flex: 1 1 auto;
+        width: 0;
+      }
+    }
+  }
+
+  /* Sticky footer */
+  footer {
+    height: $footerHeight;
+    background-color: #eee;
+    padding-top: 35px;
   }
 }

@@ -1,14 +1,9 @@
 @import 'main-view';
 
-html, body {
-  height: 100%;
+html, body, #app-container {
+  min-height: 100%;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
-}
-
-#app-container {
-  display: flex;
-  height: 100%;
 }

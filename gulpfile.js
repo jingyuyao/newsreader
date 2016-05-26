@@ -27,6 +27,7 @@ clientTask = function(watch) {
     gulp.src(paths.clientEntry)
         .pipe(plumber())
         .pipe(webpack({
+            devtool: 'source-map',
             resolve: {
                 extensions: ['', '.js', '.scss']
             },
