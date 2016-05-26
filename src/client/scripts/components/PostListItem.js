@@ -11,7 +11,7 @@ class PostListItem extends React.Component {
     render() {
         const post = this.props.post;
         return (
-            <Panel className='post-list-item'>
+            <Panel onClick={this.onClick} className='post-list-item'>
                 <h4 className='title'>
                     {post.title}
                 </h4>

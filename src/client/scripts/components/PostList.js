@@ -6,7 +6,7 @@ class PostList extends React.Component {
     constructor(props) {
         super(props);
 
-        this.handleClick = this.handleClick.bind(this);
+        this.onClick = this.onClick.bind(this);
     }
 
     render() {
@@ -16,7 +16,7 @@ class PostList extends React.Component {
                     post={post}
                     key={post.id}
                     index={i}
-                    onClick={this.handleClick}
+                    onClick={this.onClick}
                 />
             );
         });
@@ -28,7 +28,7 @@ class PostList extends React.Component {
         );
     }
 
-    handleClick(event, i) {
+    onClick(event, i) {
         this.props.selectedChangedTo(i);
     }
 }
