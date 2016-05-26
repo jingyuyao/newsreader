@@ -1,7 +1,8 @@
 @import 'main-view';
 
 html, body, #appContainer {
-  min-height: 100%;
+  /* Set app container height to window height */
+  height: 100%;
 }
 
 body {

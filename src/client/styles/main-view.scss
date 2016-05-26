@@ -1,55 +1,33 @@
 .mainView {
-  $footerHeight: 100px;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
 
-  /* Pass along min-height until main */
-  min-height: 100%;
-
-  /* Fixed header */
-  header {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 2;
-
-    .appbar {
-      align-items: center;
-      display: flex;
-      justify-content: center;
-    }
+  .appbar {
+    align-items: center;
+    display: flex;
+    justify-content: center;
   }
   
-  /* Main element takes up at least height
-   * of the window
-   */
-  main {
-    min-height: 100%;
+  .mainContainer {
+    display: flex;
+    height: 0;
+    padding-top: 5px;
+    flex: 1 1 auto;
+    width: 100%;
 
-    // For sticky footer
-    margin-bottom: -$footerHeight;
-    padding-bottom: $footerHeight;
-
-    .mainContainer {
-      display: flex;
-      padding-top: 10px;
-
-      .postList {
-        flex: 1 1 auto;
-        width: 0;
-      }
-
-      .postViewer {
-        margin-left: 10px;
-        flex: 1 1 auto;
-        width: 0;
-      }
+    .postList {
+      flex: 1 1 auto;
+      padding-left: 5px;
+      padding-right: 5px;
+      overflow-y: scroll;
+      width: 0;
     }
-  }
 
-  /* Sticky footer */
-  footer {
-    height: $footerHeight;
-    background-color: #eee;
-    padding-top: 35px;
+    .postViewer {
+      margin-left: 5px;
+      flex: 1 1 auto;
+      width: 0;
+    }
   }
 }

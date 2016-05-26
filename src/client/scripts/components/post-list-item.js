@@ -12,9 +12,9 @@ class PostListItem extends React.Component {
         const post = this.props.post;
         return (
             <Panel onClick={this.onClick} className='postListItem'>
-                <h4 className='title'>
+                <div className='mui--text-title title'>
                     {post.title}
-                </h4>
+                </div>
                 <span className='url'>
                     {post.url}
                 </span>

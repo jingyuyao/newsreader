@@ -6,9 +6,9 @@ class PostViewer extends React.Component {
         const post = this.props.post;
         return (
             <Panel className='postViewer'>
-                <h1 className='title'>
+                <div className='mui--text-display1 title'>
                     {post.title}
-                </h1>
+                </div>
                 <span className='url'>
                     {post.url}
                 </span>

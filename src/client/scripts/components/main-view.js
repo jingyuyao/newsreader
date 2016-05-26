@@ -27,30 +27,19 @@ class MainView extends React.Component {
 
         return (
             <div className='mainView'>
-                <header>
-                    <Appbar className='appbar'>
-                        <span className='mui--text-display1'>Title</span>
-                    </Appbar>
-                </header>
-                <main>
-                    {/* Buffer for fixed header */}
-                    <div className='mui--appbar-height'></div>
-                    <Container fluid={true} className='mainContainer'>
-                        <PostList
-                            posts={this.state.posts}
-                            selectedIndex={this.state.selectedIndex}
-                            selectedChangedTo={this.selectedChangedTo}
-                        />
-                        <PostViewer
-                            post={selectedPost}
-                        />
-                    </Container>
-                </main>
-                <footer>
-                    <Container fluid={true} className='footerContainer'>
-                        Hellooooooo
-                    </Container>
-                </footer>
+                <Appbar className='appbar'>
+                    <span className='mui--text-display1'>Title</span>
+                </Appbar>
+                <Container fluid={true} className='mainContainer'>
+                    <PostList
+                        posts={this.state.posts}
+                        selectedIndex={this.state.selectedIndex}
+                        selectedChangedTo={this.selectedChangedTo}
+                    />
+                    <PostViewer
+                        post={selectedPost}
+                    />
+                </Container>
             </div>
         );
     }
