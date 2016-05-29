@@ -4,6 +4,8 @@ import Container from 'muicss/lib/react/container';
 
 import PostList from './post-list';
 import PostViewer from './post-viewer';
+import BaseApi from '../apis/base-api';
+import Post from '../models/post';
 
 class MainView extends React.Component {
     constructor(props) {
@@ -15,7 +17,7 @@ class MainView extends React.Component {
         };
 
         // Need to bind this context for none built-in functions
-        this.selectedChangedTo = this.selectedChangedTo.bind(this);
+        this.newSelectedIndex = this.newSelectedIndex.bind(this);
 
         this.props.api.frontPage().then((posts) => {
             this.setState({posts: posts});
@@ -23,7 +25,7 @@ class MainView extends React.Component {
     }
 
     render() {
-        const selectedPost = this.state.posts[this.state.selectedIndex] || {};
+        const selectedPost = this.state.posts[this.state.selectedIndex] || this.props.emptyPost;
 
         return (
             <div className='mainView'>
@@ -34,7 +36,7 @@ class MainView extends React.Component {
                     <PostList
                         posts={this.state.posts}
                         selectedIndex={this.state.selectedIndex}
-                        selectedChangedTo={this.selectedChangedTo}
+                        newSelectedIndex={this.newSelectedIndex}
                     />
                     <PostViewer
                         post={selectedPost}
@@ -44,9 +46,17 @@ class MainView extends React.Component {
         );
     }
 
-    selectedChangedTo (index) {
+    newSelectedIndex(index) {
         this.setState({selectedIndex: index});
     }
 }
+
+MainView.defaultProps = {
+    emptyPost: new Post('emptyPost', 'Select a post...', 'http://www.example.org')
+};
+
+MainView.propTypes = {
+    api: React.PropTypes.instanceOf(BaseApi).isRequired
+};
 
 export default MainView;

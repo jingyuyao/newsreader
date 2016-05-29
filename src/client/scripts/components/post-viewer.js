@@ -1,6 +1,8 @@
 import React from 'react';
 import Panel from 'muicss/lib/react/panel';
 
+import Post from '../models/post';
+
 class PostViewer extends React.Component {
     render() {
         const post = this.props.post;
@@ -16,5 +18,9 @@ class PostViewer extends React.Component {
         );
     }
 }
+
+PostViewer.propTypes = {
+    post: React.PropTypes.instanceOf(Post).isRequired
+};
 
 export default PostViewer;
