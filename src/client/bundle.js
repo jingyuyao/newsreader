@@ -1,4 +1,11 @@
-// Bundles together application components
+/*
+ * Import and attaches styles and app to the DOM.
+ */
+// Import global styles.
 import 'muicss/lib/css/mui.css';
-import './styles/app';
-import './scripts/app';
+
+// Import app styles.
+import './styles/app-container';
+
+// Import app container which attaches it self to the DOM.
+import './scripts/app-container';

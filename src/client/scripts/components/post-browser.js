@@ -1,10 +1,9 @@
 import React from 'react';
-import Appbar from 'muicss/lib/react/appbar';
 import Container from 'muicss/lib/react/container';
 
 import PostList from './post-list';
 import PostViewer from './post-viewer';
-import BaseApi from '../apis/base-api';
+import PostFeed from '../apis/post-feed';
 
 class PostBrowser extends React.Component {
     constructor(props) {
@@ -15,12 +14,15 @@ class PostBrowser extends React.Component {
             posts: []
         };
 
-        // Need to bind this context for none built-in functions
+        // context binding
         this.newSelectedIndex = this.newSelectedIndex.bind(this);
 
-        this.props.api.frontPage().then((posts) => {
-            this.setState({posts: posts});
-        });
+        const postFeed = this.props.postFeed;
+        if (postFeed.hasMore()) {
+            postFeed.getMore().then((posts) => {
+                this.setState({posts: posts});
+            });
+        }
     }
 
     render() {
@@ -33,21 +35,16 @@ class PostBrowser extends React.Component {
         const selectedPost = this.state.posts[this.state.selectedIndex];
 
         return (
-            <div className='postBrowser'>
-                <Appbar className='appbar'>
-                    <span className='mui--text-display1'>Title</span>
-                </Appbar>
-                <Container fluid={true} className='mainContainer'>
-                    <PostList
-                        posts={this.state.posts}
-                        selectedIndex={this.state.selectedIndex}
-                        newSelectedIndex={this.newSelectedIndex}
-                    />
-                    <PostViewer
-                        post={selectedPost}
-                    />
-                </Container>
-            </div>
+            <Container fluid={true} className='postBrowser'>
+                <PostList
+                    posts={this.state.posts}
+                    selectedIndex={this.state.selectedIndex}
+                    newSelectedIndex={this.newSelectedIndex}
+                />
+                <PostViewer
+                    post={selectedPost}
+                />
+            </Container>
         );
     }
 
@@ -57,7 +54,7 @@ class PostBrowser extends React.Component {
 }
 
 PostBrowser.propTypes = {
-    api: React.PropTypes.instanceOf(BaseApi).isRequired
+    postFeed: React.PropTypes.instanceOf(PostFeed).isRequired
 };
 
 export default PostBrowser;

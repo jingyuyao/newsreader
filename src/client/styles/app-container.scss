@@ -1,0 +1,11 @@
+/* Set up app container and imports styles for the app */
+@import './app';
+
+html, body, #appContainer {
+  /* Set app container height to window height */
+  height: 100%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}

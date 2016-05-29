@@ -1,28 +1,12 @@
 /*
- * Base class for all APIs containing generic and helper functions.
+ * An API is a collection of PostFeeds.
  */
 class BaseApi {
     /*
-     * Should return the list of posts served as default to a user.
+     * Return a PostFeed for the frontpage for the given news api
      */
     frontPage() {
         throw "Not implemented";
-    }
-
-    /*
-     * Utilities
-     */
-    checkStatus(response) {
-        if (200 <= response.status < 300) {
-            return Promise.resolve(response);
-        }
-        else {
-            return Promise.reject(response);
-        }
-    }
-
-    toJson(response) {
-        return response.json();
     }
 }
 

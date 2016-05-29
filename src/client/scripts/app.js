@@ -1,9 +1,30 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import Appbar from 'muicss/lib/react/appbar';
 
 import Reddit from './apis/reddit';
 import PostBrowser from './components/post-browser';
 
-const reddit = new Reddit();
+class App extends React.Component {
+    constructor(props) {
+        super(props);
 
-ReactDOM.render(<PostBrowser api={reddit} />, document.getElementById('appContainer'));
+        // TODO: Make this generic
+        const reddit = new Reddit();
+        this.state = {
+            postFeed: reddit.frontPage()
+        };
+    }
+
+    render() {
+        return (
+            <div className='app'>
+                <Appbar className='appbar'>
+                    <span className='mui--text-display1'>Title</span>
+                </Appbar>
+                <PostBrowser postFeed={this.state.postFeed} />
+            </div>
+        );
+    }
+}
+
+export default App;

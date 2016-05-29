@@ -1,34 +1,22 @@
 .postBrowser {
   display: flex;
-  height: 100%;
-  flex-direction: column;
+  height: 0;
+  padding-top: 5px;
+  flex: 1 1 auto;
+  width: 100%;
 
-  .appbar {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .mainContainer {
-    display: flex;
-    height: 0;
-    padding-top: 5px;
+  .postList {
     flex: 1 1 auto;
-    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 0;
+  }
 
-    .postList {
-      flex: 1 1 auto;
-      padding-left: 5px;
-      padding-right: 5px;
-      overflow-x: hidden;
-      overflow-y: scroll;
-      width: 0;
-    }
-
-    .postViewer {
-      margin-left: 5px;
-      flex: 1 1 auto;
-      width: 0;
-    }
+  .postViewer {
+    margin-left: 5px;
+    flex: 1 1 auto;
+    width: 0;
   }
 }

@@ -1,10 +1,13 @@
 @import './components/post-browser';
 
-html, body, #appContainer {
-  /* Set app container height to window height */
+.app {
+  display: flex;
   height: 100%;
-}
+  flex-direction: column;
 
-body {
-  font-family: 'Roboto', sans-serif;
+  .appbar {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
 }
