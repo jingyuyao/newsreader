@@ -5,9 +5,8 @@ import Container from 'muicss/lib/react/container';
 import PostList from './post-list';
 import PostViewer from './post-viewer';
 import BaseApi from '../apis/base-api';
-import Post from '../models/post';
 
-class MainView extends React.Component {
+class PostBrowser extends React.Component {
     constructor(props) {
         super(props);
 
@@ -25,10 +24,16 @@ class MainView extends React.Component {
     }
 
     render() {
-        const selectedPost = this.state.posts[this.state.selectedIndex] || this.props.emptyPost;
+        if (!this.state.posts.length) {
+            return (
+                <div>Loading...</div>
+            );
+        }
+
+        const selectedPost = this.state.posts[this.state.selectedIndex];
 
         return (
-            <div className='mainView'>
+            <div className='postBrowser'>
                 <Appbar className='appbar'>
                     <span className='mui--text-display1'>Title</span>
                 </Appbar>
@@ -51,12 +56,8 @@ class MainView extends React.Component {
     }
 }
 
-MainView.defaultProps = {
-    emptyPost: new Post('emptyPost', 'Select a post...', 'http://www.example.org')
-};
-
-MainView.propTypes = {
+PostBrowser.propTypes = {
     api: React.PropTypes.instanceOf(BaseApi).isRequired
 };
 
-export default MainView;
+export default PostBrowser;
