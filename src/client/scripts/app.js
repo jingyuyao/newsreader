@@ -11,7 +11,7 @@ class App extends React.Component {
         // TODO: Make this generic
         const redditApi = new RedditApi();
         this.state = {
-            postFeed: redditApi.frontPage()
+            postFeed: redditApi.defaultFeed()
         };
     }
 

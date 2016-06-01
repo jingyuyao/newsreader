@@ -3,9 +3,9 @@
  */
 class BaseApi {
     /*
-     * Return a PostFeed for the frontpage for the given news api
+     * Return the default PostFeed for a given news API
      */
-    frontPage() {
+    defaultFeed() {
         throw "Not implemented";
     }
 }
