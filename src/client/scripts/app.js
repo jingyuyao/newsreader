@@ -1,7 +1,7 @@
 import React from 'react';
 import Appbar from 'muicss/lib/react/appbar';
 
-import Reddit from './apis/reddit';
+import RedditApi from './apis/reddit/api';
 import PostBrowser from './components/post-browser';
 
 class App extends React.Component {
@@ -9,9 +9,9 @@ class App extends React.Component {
         super(props);
 
         // TODO: Make this generic
-        const reddit = new Reddit();
+        const redditApi = new RedditApi();
         this.state = {
-            postFeed: reddit.frontPage()
+            postFeed: redditApi.frontPage()
         };
     }
 

@@ -1,8 +1,8 @@
 import URI from 'urijs';
 
-import BaseApi from './base-api';
-import PostFeed from './post-feed';
-import RedditPost from '../models/reddit/post';
+import BaseApi from '../base-api';
+import PostFeed from '../post-feed';
+import RedditPost from '../../models/reddit/post';
 
 class Reddit extends BaseApi {
     constructor() {
