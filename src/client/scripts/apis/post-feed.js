@@ -1,4 +1,6 @@
-/* A finite feed of posts.*/
+import 'whatwg-fetch';
+
+/* A (in)finite feed of posts.*/
 class PostFeed {
     constructor(baseUri) {
         this.baseUri = baseUri;
