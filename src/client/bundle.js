@@ -1,6 +1,6 @@
-/*
- * Import and attaches styles and app to the DOM.
- */
+// Polyfills
+import 'babel-polyfill';
+
 // Import global styles.
 import 'muicss/lib/css/mui.css';
 
