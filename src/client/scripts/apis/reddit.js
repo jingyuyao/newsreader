@@ -18,8 +18,9 @@ class Reddit extends BaseApi {
 
 class FrontPage extends PostFeed {
     constructor(baseUri) {
-        super(baseUri);
+        super();
 
+        this.baseUri = baseUri;
         // Setting to undefined prevents the param from showing up
         // on first load.
         this.after = undefined;

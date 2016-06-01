@@ -2,10 +2,6 @@ import 'whatwg-fetch';
 
 /* A (in)finite feed of posts.*/
 class PostFeed {
-    constructor(baseUri) {
-        this.baseUri = baseUri;
-    }
-
     /* Boolean indicating whether there
      * are more posts to get.
      */
