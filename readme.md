@@ -20,6 +20,10 @@
 
 ## Conventions
 
+### React components
+
+`render()` should be the first function after constructor.
+
 ### File naming
 
 Files should be lowercase with nouns separated by a dash.
