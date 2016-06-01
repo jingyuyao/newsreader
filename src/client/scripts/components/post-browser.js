@@ -10,8 +10,9 @@ class PostBrowser extends React.Component {
         super(props);
 
         this.state = {
-            selectedIndex: 0,
-            posts: []
+            hasMore: true,
+            posts: [],
+            selectedIndex: 0
         };
 
         // context binding
@@ -22,11 +23,13 @@ class PostBrowser extends React.Component {
             postFeed.getMore().then((posts) => {
                 this.setState({posts: posts});
             });
+        } else {
+            this.setState({hasMore: false});
         }
     }
 
     render() {
-        if (!this.state.posts.length) {
+        if (this.state.hasMore && !this.state.posts.length) {
             return (
                 <div>Loading...</div>
             );
