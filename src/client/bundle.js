@@ -1,5 +1,6 @@
 // Polyfills
 import 'babel-polyfill';
+import 'whatwg-fetch';
 
 // Import global styles.
 import 'muicss/lib/css/mui.css';

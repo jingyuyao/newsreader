@@ -1,5 +1,3 @@
-import 'whatwg-fetch';
-
 /* A (in)finite feed of posts.*/
 class PostFeed {
     /* Boolean indicating whether there
