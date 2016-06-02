@@ -20,9 +20,14 @@
 
 ## Conventions
 
+### General
+
+Static methods should come last.
+
 ### React components
 
-`render()` should be the first function after constructor.
+Render methods should come immediately after the constructor.
+All non-static functions must bind to instance in constructor.
 
 ### File naming
 
