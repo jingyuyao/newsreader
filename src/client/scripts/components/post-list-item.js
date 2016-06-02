@@ -7,36 +7,40 @@ class PostListItem extends React.Component {
     constructor(props) {
         super(props);
 
-        this.renderItemContents = this.renderItemContents.bind(this);
+        this.getContainerProps = this.getContainerProps.bind(this);
         this.postClicked = this.postClicked.bind(this);
     }
 
     render() {
+        const ContainerClass = this.constructor.getContainerClass();
+        const containerProps = this.getContainerProps();
         const post = this.props.post;
-        const title = (
-            <div className='mui--text-title title'>
-                {post.title}
-            </div>
-        );
-        const url = (
-            <span className='url'>
-                {post.url}
-            </span>
-        );
 
-        return this.renderItemContents(title, url);
+        return (
+            <ContainerClass {...containerProps}>
+                <div className='mui--text-title title'>
+                    {post.title}
+                </div>
+                <span className='url'>
+                    {post.url}
+                </span>
+            </ContainerClass>
+        );
     }
 
-    renderItemContents(...contents) {
-        return (
-            <Panel onClick={this.postClicked} className='postListItem'>
-                {contents}
-            </Panel>
-        );
+    getContainerProps() {
+        return {
+            className: 'postListItem',
+            onClick: this.postClicked
+        };
     }
 
     postClicked(event) {
         this.props.postClicked(event, this.props.index);
+    }
+
+    static getContainerClass() {
+        return Panel;
     }
 }
 

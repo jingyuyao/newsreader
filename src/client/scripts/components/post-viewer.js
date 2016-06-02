@@ -7,30 +7,34 @@ class PostViewer extends React.Component {
     constructor(props) {
         super(props);
 
-        this.renderViewerContents = this.renderViewerContents.bind(this);
+        this.getContainerProps = this.getContainerProps.bind(this);
     }
 
     render() {
+        const ContainerClass = this.constructor.getContainerClass();
+        const containerProps = this.getContainerProps();
         const post = this.props.post;
-        const title = (
-            <div className='mui--text-display1 title'>
-                {post.title}
-            </div>
+
+        return (
+            <ContainerClass {...containerProps}>
+                <div className='mui--text-display1 title'>
+                    {post.title}
+                </div>
+                <span className='url'>
+                    {post.url}
+                </span>
+            </ContainerClass>
         );
-        const url = (
-            <span className='url'>
-                {post.url}
-            </span>
-        );
-        return this.renderViewerContents(title, url);
     }
 
-    renderViewerContents(...contents) {
-        return (
-            <Panel className='postViewer'>
-                {contents}
-            </Panel>
-        );
+    getContainerProps() {
+        return {
+            className: 'postViewer'
+        };
+    }
+
+    static getContainerClass() {
+        return Panel;
     }
 }
 

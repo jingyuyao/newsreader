@@ -1,5 +1,4 @@
 // Polyfills
-import 'babel-polyfill';
 import 'whatwg-fetch';
 
 // Import global styles.
