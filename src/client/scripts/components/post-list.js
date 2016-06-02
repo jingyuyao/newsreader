@@ -7,32 +7,45 @@ class PostList extends React.Component {
     constructor(props) {
         super(props);
 
+        this.renderPostListItem = this.renderPostListItem.bind(this);
+        this.getPostListItemProps = this.getPostListItemProps.bind(this);
         this.postClicked = this.postClicked.bind(this);
     }
 
     render() {
-        const items = this.props.posts.map((post, index) => {
-            return (
-                <PostListItem
-                    post={post}
-                    key={post.id}
-                    index={index}
-                    postClicked={this.postClicked}
-                />
-            );
-        });
+        const postListItems = this.props.posts.map(this.renderPostListItem);
         
         return (
             <div className='postList'>
-                {items}
+                {postListItems}
             </div>
         );
+    }
+
+    renderPostListItem(post, index) {
+        const PostListItemClass = this.constructor.getPostListItemClass();
+        const postListItemProps = this.getPostListItemProps(post, index);
+
+        return <PostListItemClass {...postListItemProps} />;
+    }
+
+    getPostListItemProps(post, index) {
+        return {
+            post: post,
+            key: post.id,
+            index: index,
+            postClicked: this.postClicked
+        }
     }
 
     postClicked(event, index) {
         if (index != this.props.selectedIndex) {
             this.props.newSelectedIndex(index);
         }
+    }
+
+    static getPostListItemClass() {
+        return PostListItem;
     }
 }
 
