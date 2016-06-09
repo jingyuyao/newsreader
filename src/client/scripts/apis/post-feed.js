@@ -4,12 +4,12 @@ class PostFeed {
      * are more posts to get.
      */
     hasMore() {
-        throw "Not implemented";
+        throw 'Not implemented';
     }
 
     /* Return a promise for a list of Posts */
     getMore() {
-        throw "Not implemented";
+        throw 'Not implemented';
     }
 
     /*

@@ -4,11 +4,13 @@ var plumber = require('gulp-plumber');
 var gutil = require('gulp-util');
 var webpack = require('webpack-stream');
 var del = require('del');
+var eslint = require('gulp-eslint');
 
 var paths = {
     buildRoot: 'build/',
     clientBuildRoot: 'build/client/',
 
+    allJs: 'src/**/*.js',
     clientEntry: 'src/client/bundle.js',
     serverJs: [
         'src/**/*.js',
@@ -75,10 +77,20 @@ gulp.task('static:watch', function() {
     gulp.watch(paths.staticFiles, ['static']);
 });
 
+gulp.task('lint', function() {
+    return gulp.src(paths.allJs)
+        .pipe(eslint())
+        .pipe(eslint.format());
+});
+
+gulp.task('lint:watch', function() {
+    gulp.watch(paths.allJs, ['lint']);
+});
+
 gulp.task('clean', function() {
     del(['build/']);
 });
 
-gulp.task('watch', ['server:watch', 'static:watch', 'client:watch']);
+gulp.task('watch', ['lint:watch', 'server:watch', 'static:watch', 'client:watch']);
 
-gulp.task('default', ['server', 'static', 'client']);
+gulp.task('default', ['lint', 'server', 'static', 'client']);

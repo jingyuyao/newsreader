@@ -1,6 +1,5 @@
 import React from 'react';
 
-import ApiBase from '../apis/base';
 import PostBrowser from '../components/post-browser';
 
 /*
@@ -26,7 +25,7 @@ class SiteBase extends React.Component {
     }
 
     getApi() {
-        throw "Not implemented";
+        throw 'Not implemented';
     }
 
     getPostBrowserClass() {
