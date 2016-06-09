@@ -5,6 +5,7 @@ var gutil = require('gulp-util');
 var webpack = require('webpack-stream');
 var del = require('del');
 var eslint = require('gulp-eslint');
+var notify = require('gulp-notify');
 
 var paths = {
     buildRoot: 'build/',
@@ -79,8 +80,11 @@ gulp.task('static:watch', function() {
 
 gulp.task('lint', function() {
     return gulp.src(paths.allJs)
+        .pipe(plumber({errorHandler: notify.onError("Eslint: <%= error.message %>")}))
         .pipe(eslint())
-        .pipe(eslint.format());
+        .pipe(eslint.format())
+        // This emits an error that is caught by plumber and then passed to notify
+        .pipe(eslint.failAfterError());
 });
 
 gulp.task('lint:watch', function() {
