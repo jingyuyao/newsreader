@@ -25,7 +25,9 @@ class PostBrowser extends React.Component {
         this.initializePosts = this.initializePosts.bind(this);
         this.hasBadFeed = this.hasBadFeed.bind(this);
         this.hasPosts = this.hasPosts.bind(this);
+        this.getPostListClass = this.getPostListClass.bind(this);
         this.getPostListProps = this.getPostListProps.bind(this);
+        this.getPostViewerClass = this.getPostViewerClass.bind(this);
         this.getPostViewerProps = this.getPostViewerProps.bind(this);
         this.newSelectedIndex = this.newSelectedIndex.bind(this);
 
@@ -95,12 +97,20 @@ class PostBrowser extends React.Component {
         return this.state.posts.length;
     }
 
+    getPostListClass() {
+        return PostList;
+    }
+
     getPostListProps() {
         return {
             posts: this.state.posts,
             selectedIndex: this.state.selectedIndex,
             newSelectedIndex: this.newSelectedIndex
         };
+    }
+
+    getPostViewerClass() {
+        return PostViewer;
     }
 
     getPostViewerProps() {
@@ -111,14 +121,6 @@ class PostBrowser extends React.Component {
 
     newSelectedIndex(index) {
         this.setState({selectedIndex: index});
-    }
-
-    getPostListClass() {
-        return PostList;
-    }
-
-    getPostViewerClass() {
-        return PostViewer;
     }
 }
 

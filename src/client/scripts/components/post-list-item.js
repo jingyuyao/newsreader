@@ -7,6 +7,7 @@ class PostListItem extends React.Component {
     constructor(props) {
         super(props);
 
+        this.getContainerClass = this.getContainerClass.bind(this);
         this.getContainerProps = this.getContainerProps.bind(this);
         this.postClicked = this.postClicked.bind(this);
     }
@@ -28,6 +29,10 @@ class PostListItem extends React.Component {
         );
     }
 
+    getContainerClass() {
+        return Panel;
+    }
+
     getContainerProps() {
         return {
             className: 'postListItem',
@@ -37,10 +42,6 @@ class PostListItem extends React.Component {
 
     postClicked(event) {
         this.props.postClicked(event, this.props.index);
-    }
-
-    getContainerClass() {
-        return Panel;
     }
 }
 

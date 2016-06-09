@@ -8,6 +8,7 @@ class PostList extends React.Component {
         super(props);
 
         this.renderPostListItem = this.renderPostListItem.bind(this);
+        this.getPostListItemClass = this.getPostListItemClass.bind(this);
         this.getPostListItemProps = this.getPostListItemProps.bind(this);
         this.postClicked = this.postClicked.bind(this);
     }
@@ -29,6 +30,10 @@ class PostList extends React.Component {
         return <PostListItemClass {...postListItemProps} />;
     }
 
+    getPostListItemClass() {
+        return PostListItem;
+    }
+
     getPostListItemProps(post, index) {
         return {
             post: post,
@@ -42,10 +47,6 @@ class PostList extends React.Component {
         if (index != this.props.selectedIndex) {
             this.props.newSelectedIndex(index);
         }
-    }
-
-    getPostListItemClass() {
-        return PostListItem;
     }
 }
 

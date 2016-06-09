@@ -7,6 +7,7 @@ class PostViewer extends React.Component {
     constructor(props) {
         super(props);
 
+        this.getContainerClass = this.getContainerClass.bind(this);
         this.getContainerProps = this.getContainerProps.bind(this);
     }
 
@@ -27,14 +28,14 @@ class PostViewer extends React.Component {
         );
     }
 
+    getContainerClass() {
+        return Panel;
+    }
+
     getContainerProps() {
         return {
             className: 'postViewer'
         };
-    }
-
-    getContainerClass() {
-        return Panel;
     }
 }
 
