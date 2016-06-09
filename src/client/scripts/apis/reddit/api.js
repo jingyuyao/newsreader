@@ -1,9 +1,9 @@
 import URI from 'urijs';
 
-import BaseApi from '../base-api';
+import ApiBase from '../base';
 import DefaultFeed from './default-feed';
 
-class Reddit extends BaseApi {
+class Reddit extends ApiBase {
     constructor() {
         super();
 

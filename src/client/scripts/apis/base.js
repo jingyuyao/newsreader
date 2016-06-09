@@ -1,7 +1,7 @@
 /*
  * An API is a collection of PostFeeds.
  */
-class BaseApi {
+class ApiBase {
     /*
      * Return the default PostFeed for a given news API
      */
@@ -10,4 +10,4 @@ class BaseApi {
     }
 }
 
-export default BaseApi;
+export default ApiBase;
