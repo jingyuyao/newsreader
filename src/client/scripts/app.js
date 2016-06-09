@@ -1,32 +1,25 @@
 import React from 'react';
 import Appbar from 'muicss/lib/react/appbar';
 
-import RedditApi from './apis/reddit/api';
-import RedditPostBrowser from './components/reddit/post-browser';
+import RedditSite from './sites/reddit';
 
 class App extends React.Component {
     constructor(props) {
         super(props);
 
-        // TODO: Create a concept of Site(?) that provides api, feed, browser class
-        // and the associated logic to switch feeds. Logic to switch feeds probably
-        // will live in the "App" level.
-        const redditApi = new RedditApi();
         this.state = {
-            api: redditApi,
-            postFeed: redditApi.defaultFeed(),
-            PostBrowserClass: RedditPostBrowser
+            SiteClass: RedditSite
         };
     }
 
     render() {
-        const PostBrowserClass = this.state.PostBrowserClass;
+        const SiteClass = this.state.SiteClass;
         return (
             <div className='app'>
                 <Appbar className='appbar'>
                     <span className='mui--text-display1'>Title</span>
                 </Appbar>
-                <PostBrowserClass postFeed={this.state.postFeed} />
+                <SiteClass />
             </div>
         );
     }
