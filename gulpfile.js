@@ -28,7 +28,7 @@ var paths = {
 
 clientTask = function(watch) {
     gulp.src(paths.clientEntry)
-        .pipe(plumber())
+        .pipe(plumber({errorHandler: notify.onError("<%= error.message %>")}))
         .pipe(webpack({
             devtool: 'source-map',
             resolve: {
@@ -45,7 +45,7 @@ clientTask = function(watch) {
                     { test: /\.scss$/, loaders: ['style', 'css', 'sass'] }
                 ]
             }
-        }).on('error', gutil.log))
+        }))
         .pipe(gulp.dest(paths.clientBuildRoot));
 }
 
@@ -59,8 +59,8 @@ gulp.task('client:watch', function() {
 
 gulp.task('server', function() {
     gulp.src(paths.serverJs, {base: 'src'})
-        .pipe(plumber())
-        .pipe(babel().on('error', gutil.log))
+        .pipe(plumber({errorHandler: notify.onError("<%= error.message %>")}))
+        .pipe(babel())
         .pipe(gulp.dest(paths.buildRoot));
 });
 
