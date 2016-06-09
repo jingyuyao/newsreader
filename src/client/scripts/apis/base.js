@@ -6,7 +6,7 @@ class ApiBase {
      * Return the default PostFeed for a given news API
      */
     defaultFeed() {
-        throw "Not implemented";
+        throw 'Not implemented';
     }
 }
 

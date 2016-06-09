@@ -40,7 +40,7 @@ class PostList extends React.Component {
             key: post.id,
             index: index,
             postClicked: this.postClicked
-        }
+        };
     }
 
     postClicked(event, index) {
