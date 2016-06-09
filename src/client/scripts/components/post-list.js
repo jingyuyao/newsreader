@@ -23,7 +23,7 @@ class PostList extends React.Component {
     }
 
     renderPostListItem(post, index) {
-        const PostListItemClass = this.constructor.getPostListItemClass();
+        const PostListItemClass = this.getPostListItemClass();
         const postListItemProps = this.getPostListItemProps(post, index);
 
         return <PostListItemClass {...postListItemProps} />;
@@ -44,7 +44,7 @@ class PostList extends React.Component {
         }
     }
 
-    static getPostListItemClass() {
+    getPostListItemClass() {
         return PostListItem;
     }
 }

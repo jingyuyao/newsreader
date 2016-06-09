@@ -12,7 +12,7 @@ class PostListItem extends React.Component {
     }
 
     render() {
-        const ContainerClass = this.constructor.getContainerClass();
+        const ContainerClass = this.getContainerClass();
         const containerProps = this.getContainerProps();
         const post = this.props.post;
 
@@ -39,7 +39,7 @@ class PostListItem extends React.Component {
         this.props.postClicked(event, this.props.index);
     }
 
-    static getContainerClass() {
+    getContainerClass() {
         return Panel;
     }
 }

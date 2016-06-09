@@ -15,5 +15,4 @@ class Reddit extends BaseApi {
     }
 }
 
-
 export default Reddit;

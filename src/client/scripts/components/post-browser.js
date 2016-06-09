@@ -62,12 +62,12 @@ class PostBrowser extends React.Component {
     }
 
     renderPostList() {
-        const PostListClass = this.constructor.getPostListClass();
+        const PostListClass = this.getPostListClass();
         return <PostListClass {...this.getPostListProps()}/>;
     }
 
     renderPostViewer() {
-        const PostViewerClass = this.constructor.getPostViewerClass();
+        const PostViewerClass = this.getPostViewerClass();
         return <PostViewerClass {...this.getPostViewerProps()}/>;
     }
 
@@ -113,11 +113,11 @@ class PostBrowser extends React.Component {
         this.setState({selectedIndex: index});
     }
 
-    static getPostListClass() {
+    getPostListClass() {
         return PostList;
     }
 
-    static getPostViewerClass() {
+    getPostViewerClass() {
         return PostViewer;
     }
 }
