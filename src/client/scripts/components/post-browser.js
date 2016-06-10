@@ -105,7 +105,7 @@ class PostBrowser extends React.Component {
         return {
             posts: this.state.posts,
             selectedIndex: this.state.selectedIndex,
-            newSelectedIndex: this.newSelectedIndex
+            newSelectedIndexCallback: this.newSelectedIndex
         };
     }
 

@@ -10,7 +10,7 @@ class PostList extends React.Component {
         this.renderPostListItem = this.renderPostListItem.bind(this);
         this.getPostListItemClass = this.getPostListItemClass.bind(this);
         this.getPostListItemProps = this.getPostListItemProps.bind(this);
-        this.postSelected = this.postSelected.bind(this);
+        this.selectedIndexChanged = this.selectedIndexChanged.bind(this);
     }
 
     render() {
@@ -39,13 +39,13 @@ class PostList extends React.Component {
             post: post,
             key: post.id,
             index: index,
-            postSelected: this.postSelected
+            selectedCallback: this.selectedIndexChanged
         };
     }
 
-    postSelected(index) {
+    selectedIndexChanged(index) {
         if (index != this.props.selectedIndex) {
-            this.props.newSelectedIndex(index);
+            this.props.newSelectedIndexCallback(index);
         }
     }
 }
@@ -53,7 +53,7 @@ class PostList extends React.Component {
 PostList.propTypes = {
     selectedIndex: React.PropTypes.number.isRequired,
     posts: React.PropTypes.arrayOf(React.PropTypes.instanceOf(Post)).isRequired,
-    newSelectedIndex: React.PropTypes.func.isRequired
+    newSelectedIndexCallback: React.PropTypes.func.isRequired
 };
 
 export default PostList;
