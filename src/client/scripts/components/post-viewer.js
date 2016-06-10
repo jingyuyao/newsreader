@@ -3,7 +3,11 @@ import Panel from 'muicss/lib/react/panel';
 
 import Post from '../models/post';
 
-class PostViewer extends React.Component {
+export const RENDER_MODES = {
+    iframe: 'iframe'
+};
+
+export default class PostViewer extends React.Component {
     constructor(props) {
         super(props);
 
@@ -40,7 +44,6 @@ class PostViewer extends React.Component {
 }
 
 PostViewer.propTypes = {
-    post: React.PropTypes.instanceOf(Post).isRequired
+    post: React.PropTypes.instanceOf(Post).isRequired,
+    renderMode: React.PropTypes.oneOf(Object.keys(RENDER_MODES).map(key => RENDER_MODES[key])).isRequired
 };
-
-export default PostViewer;
