@@ -19,9 +19,9 @@ class DefaultFeed extends PostFeed {
     getMore() {
         const url = this.baseUri.query({after: this.after}).toString();
 
-        return this.getJson(url).then((json) => {
+        return this.getJson(url).then(json => {
             this.after = json.data.after;
-            return json.data.children.map((child) => new RedditPost(child.data));
+            return json.data.children.map(child => new RedditPost(child.data));
         });
     }
 }

@@ -77,7 +77,7 @@ class PostBrowser extends React.Component {
         const postFeed = this.props.postFeed;
 
         if (postFeed.hasMore()) {
-            postFeed.getMore().then((posts) => {
+            postFeed.getMore().then(posts => {
                 this.setState({posts: posts});
             });
         }
