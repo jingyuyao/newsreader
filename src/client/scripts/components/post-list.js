@@ -3,7 +3,7 @@ import React from 'react';
 import PostListItem from './post-list-item';
 import Post from '../models/post';
 
-class PostList extends React.Component {
+export default class PostList extends React.Component {
     constructor(props) {
         super(props);
 
@@ -55,5 +55,3 @@ PostList.propTypes = {
     posts: React.PropTypes.arrayOf(React.PropTypes.instanceOf(Post)).isRequired,
     postSelectionChangedCallback: React.PropTypes.func.isRequired
 };
-
-export default PostList;

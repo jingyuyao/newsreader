@@ -5,7 +5,7 @@ import Panel from 'muicss/lib/react/panel';
 import {RENDER_MODES} from './post-viewer';
 import Post from '../models/post';
 
-class PostListItem extends React.Component {
+export default class PostListItem extends React.Component {
     constructor(props) {
         super(props);
 
@@ -55,5 +55,3 @@ PostListItem.propTypes = {
     post: React.PropTypes.instanceOf(Post).isRequired,
     selectedCallback: React.PropTypes.func.isRequired
 };
-
-export default PostListItem;

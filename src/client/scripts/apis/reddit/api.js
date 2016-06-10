@@ -3,7 +3,7 @@ import URI from 'urijs';
 import ApiBase from '../base';
 import DefaultFeed from './default-feed';
 
-class Reddit extends ApiBase {
+export default class Reddit extends ApiBase {
     constructor() {
         super();
 
@@ -14,5 +14,3 @@ class Reddit extends ApiBase {
         return new DefaultFeed(this.baseUri);
     }
 }
-
-export default Reddit;

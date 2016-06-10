@@ -5,12 +5,10 @@
  * common to all posts. The class is mainly used
  * to validate props in React components.
  */
-class Post {
+export default class Post {
     constructor(id, title, url) {
         this.id = id;
         this.title = title;
         this.url = url;
     }
 }
-
-export default Post;

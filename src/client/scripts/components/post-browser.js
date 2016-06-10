@@ -5,7 +5,7 @@ import PostList from './post-list';
 import PostViewer, {RENDER_MODES} from './post-viewer';
 import PostFeed from '../apis/post-feed';
 
-class PostBrowser extends React.Component {
+export default class PostBrowser extends React.Component {
     constructor(props) {
         super(props);
 
@@ -132,5 +132,3 @@ class PostBrowser extends React.Component {
 PostBrowser.propTypes = {
     postFeed: React.PropTypes.instanceOf(PostFeed).isRequired
 };
-
-export default PostBrowser;
