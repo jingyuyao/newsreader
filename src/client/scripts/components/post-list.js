@@ -43,7 +43,7 @@ class PostList extends React.Component {
         };
     }
 
-    postSelected(event, index) {
+    postSelected(index) {
         if (index != this.props.selectedIndex) {
             this.props.newSelectedIndex(index);
         }

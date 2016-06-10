@@ -40,8 +40,8 @@ class PostListItem extends React.Component {
         };
     }
 
-    postSelected(event) {
-        this.props.postSelected(event, this.props.index);
+    postSelected() {
+        this.props.postSelected(this.props.index);
     }
 }
 
