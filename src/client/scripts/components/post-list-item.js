@@ -9,7 +9,7 @@ class PostListItem extends React.Component {
 
         this.getContainerClass = this.getContainerClass.bind(this);
         this.getContainerProps = this.getContainerProps.bind(this);
-        this.postClicked = this.postClicked.bind(this);
+        this.postSelected = this.postSelected.bind(this);
     }
 
     render() {
@@ -36,19 +36,19 @@ class PostListItem extends React.Component {
     getContainerProps() {
         return {
             className: 'postListItem',
-            onClick: this.postClicked
+            onClick: this.postSelected
         };
     }
 
-    postClicked(event) {
-        this.props.postClicked(event, this.props.index);
+    postSelected(event) {
+        this.props.postSelected(event, this.props.index);
     }
 }
 
 PostListItem.propTypes = {
     index: React.PropTypes.number.isRequired,
     post: React.PropTypes.instanceOf(Post).isRequired,
-    postClicked: React.PropTypes.func.isRequired
+    postSelected: React.PropTypes.func.isRequired
 };
 
 export default PostListItem;
