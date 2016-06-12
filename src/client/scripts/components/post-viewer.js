@@ -11,25 +11,38 @@ export default class PostViewer extends React.Component {
     constructor(props) {
         super(props);
 
+        this.renderViewer = this.renderViewer.bind(this);
+        this.renderIframeViewer = this.renderIframeViewer.bind(this);
         this.getContainerClass = this.getContainerClass.bind(this);
         this.getContainerProps = this.getContainerProps.bind(this);
     }
 
     render() {
+        const post = this.props.post;
         const ContainerClass = this.getContainerClass();
         const containerProps = this.getContainerProps();
-        const post = this.props.post;
+        const viewer = this.renderViewer();
 
         return (
             <ContainerClass {...containerProps}>
                 <div className='mui--text-display1 title'>
                     {post.title}
                 </div>
-                <span className='url'>
-                    {post.url}
-                </span>
+                {viewer}
             </ContainerClass>
         );
+    }
+
+    renderViewer() {
+        const renderMode = this.props.renderMode;
+
+        if (renderMode == RENDER_MODES.iframe) {
+            return this.renderIframeViewer();
+        }
+    }
+
+    renderIframeViewer() {
+        return <iframe className='iframeView' src={this.props.post.url} />;
     }
 
     getContainerClass() {
