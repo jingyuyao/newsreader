@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PostBrowser from '../components/post-browser';
+import FeedBrowser from '../components/feed-browser';
 
 /*
  * Contains logic to change new feeds.
@@ -10,7 +10,7 @@ export default class SiteBase extends React.Component {
         super(props);
 
         this.getApi = this.getApi.bind(this);
-        this.getPostBrowserClass = this.getPostBrowserClass.bind(this);
+        this.getFeedBrowserClass = this.getFeedBrowserClass.bind(this);
 
         this.api = this.getApi();
 
@@ -20,15 +20,15 @@ export default class SiteBase extends React.Component {
     }
 
     render() {
-        const PostBrowserClass = this.getPostBrowserClass();
-        return <PostBrowserClass postFeed={this.state.postFeed} />;
+        const FeedBrowserClass = this.getFeedBrowserClass();
+        return <FeedBrowserClass postFeed={this.state.postFeed} />;
     }
 
     getApi() {
         throw 'Not implemented';
     }
 
-    getPostBrowserClass() {
-        return PostBrowser;
+    getFeedBrowserClass() {
+        return FeedBrowser;
     }
 }

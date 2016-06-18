@@ -5,7 +5,7 @@ import PostList from './post-list';
 import PostViewer, {VIEW_CLASSES} from './post-viewer';
 import PostFeed from '../apis/post-feed';
 
-export default class PostBrowser extends React.Component {
+export default class FeedBrowser extends React.Component {
     constructor(props) {
         super(props);
 
@@ -18,7 +18,7 @@ export default class PostBrowser extends React.Component {
         };
 
         // context binding
-        this.renderPostBrowser = this.renderPostBrowser.bind(this);
+        this.renderFeedBrowser = this.renderFeedBrowser.bind(this);
         this.renderBadFeed = this.renderBadFeed.bind(this);
         this.renderInitialLoading = this.renderInitialLoading.bind(this);
         this.renderPostList = this.renderPostList.bind(this);
@@ -37,7 +37,7 @@ export default class PostBrowser extends React.Component {
 
     render() {
         if (this.hasPosts()) {
-            return this.renderPostBrowser();
+            return this.renderFeedBrowser();
         }
         else if (this.hasBadFeed()) {
             return this.renderBadFeed();
@@ -47,9 +47,9 @@ export default class PostBrowser extends React.Component {
         }
     }
 
-    renderPostBrowser() {
+    renderFeedBrowser() {
         return (
-            <Container fluid={true} className='postBrowser'>
+            <Container fluid={true} className='feedBrowser'>
                 {this.renderPostList()}
                 {this.renderPostViewer()}
             </Container>
@@ -129,6 +129,6 @@ export default class PostBrowser extends React.Component {
     }
 }
 
-PostBrowser.propTypes = {
+FeedBrowser.propTypes = {
     postFeed: React.PropTypes.instanceOf(PostFeed).isRequired
 };
