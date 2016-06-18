@@ -1,18 +1,18 @@
 {
-  "name": "redditslider",
+  "name": "newsreader",
   "version": "1.0.0",
-  "description": "Auto viewer for Reddit",
+  "description": "A multi-sourced unbiased news reader",
   "scripts": {
     "start": "node build/server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jingyuyao/redditslider.git"
+    "url": "git+https://github.com/jingyuyao/newsreader.git"
   },
   "author": "Jingyu Yao",
   "private": true,
   "bugs": {
-    "url": "https://github.com/jingyuyao/redditslider/issues"
+    "url": "https://github.com/jingyuyao/newsreader/issues"
   },
   "dependencies": {
     "babel-core": "^6.9.0",

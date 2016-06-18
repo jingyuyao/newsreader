@@ -9,6 +9,13 @@
 - Libraries: muicss
 - Tools: gulp, webpack
 
+### npm globals
+
+- gulp-cli
+- eslint
+- eslint_d
+- eslint-plugin-react
+
 ## Directory structure
 
 - src/ - server root built by gulp-babel (excluding client/)
@@ -37,3 +44,16 @@ e.g. `hello-world.js`
 ### HTML, Scss
 
 Element id and classes should be camelCase.
+
+## Sublime
+
+### Helpful packages
+
+- Babel
+- BracketHighlighter
+- DocBlockr
+- Git
+- GitGutter
+- Sass
+- SublimeLinter
+- SublimeLinter-contrib-eslint_d
