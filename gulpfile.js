@@ -26,9 +26,9 @@ var paths = {
     ]
 };
 
-clientTask = function(watch) {
+var clientTask = function(watch) {
     gulp.src(paths.clientEntry)
-        .pipe(plumber({errorHandler: notify.onError("Webpack compile error!")}))
+        .pipe(plumber({errorHandler: notify.onError('Webpack compile error!')}))
         .pipe(webpack({
             devtool: 'source-map',
             resolve: {
@@ -47,7 +47,7 @@ clientTask = function(watch) {
             }
         }).on('error', gutil.log))
         .pipe(gulp.dest(paths.clientBuildRoot));
-}
+};
 
 gulp.task('client', function() {
     clientTask(false);
@@ -59,7 +59,7 @@ gulp.task('client:watch', function() {
 
 gulp.task('server', function() {
     gulp.src(paths.serverJs, {base: 'src'})
-        .pipe(plumber({errorHandler: notify.onError("Server compile error!")}))
+        .pipe(plumber({errorHandler: notify.onError('Server compile error!')}))
         .pipe(babel().on('error', gutil.log))
         .pipe(gulp.dest(paths.buildRoot));
 });
@@ -80,7 +80,7 @@ gulp.task('static:watch', function() {
 
 gulp.task('lint', function() {
     return gulp.src(paths.allJs)
-        .pipe(plumber({errorHandler: notify.onError("Eslint error!")}))
+        .pipe(plumber({errorHandler: notify.onError('Eslint error!')}))
         .pipe(eslint())
         .pipe(eslint.format())
         // This emits an error that is caught by plumber and then passed to notify
@@ -95,6 +95,6 @@ gulp.task('clean', function() {
     del(['build/']);
 });
 
-gulp.task('watch', ['lint:watch', 'server:watch', 'static:watch', 'client:watch']);
+gulp.task('watch', ['server:watch', 'static:watch', 'client:watch']);
 
-gulp.task('default', ['lint', 'server', 'static', 'client']);
+gulp.task('default', ['server', 'static', 'client']);
