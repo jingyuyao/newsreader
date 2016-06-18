@@ -2,10 +2,10 @@ var gulp = require('gulp');
 var babel = require('gulp-babel');
 var plumber = require('gulp-plumber');
 var gutil = require('gulp-util');
-var webpack = require('webpack-stream');
+var webpack = require('webpack');
+var webpackStream = require('webpack-stream');
 var del = require('del');
 var eslint = require('gulp-eslint');
-var notify = require('gulp-notify');
 
 var paths = {
     buildRoot: 'build/',
@@ -28,8 +28,8 @@ var paths = {
 
 var clientTask = function(watch) {
     gulp.src(paths.clientEntry)
-        .pipe(plumber({errorHandler: notify.onError('Webpack compile error!')}))
-        .pipe(webpack({
+        .pipe(plumber())
+        .pipe(webpackStream({
             devtool: 'source-map',
             resolve: {
                 extensions: ['', '.js', '.scss']
@@ -44,7 +44,14 @@ var clientTask = function(watch) {
                     { test: /\.css$/, loaders: ['style', 'css'] },
                     { test: /\.scss$/, loaders: ['style', 'css', 'sass'] }
                 ]
-            }
+            },
+            plugins: [
+                new webpack.optimize.UglifyJsPlugin({
+                    compress: {
+                        warnings: false
+                    }
+                })
+            ]
         }).on('error', gutil.log))
         .pipe(gulp.dest(paths.clientBuildRoot));
 };
@@ -59,7 +66,7 @@ gulp.task('client:watch', function() {
 
 gulp.task('server', function() {
     gulp.src(paths.serverJs, {base: 'src'})
-        .pipe(plumber({errorHandler: notify.onError('Server compile error!')}))
+        .pipe(plumber())
         .pipe(babel().on('error', gutil.log))
         .pipe(gulp.dest(paths.buildRoot));
 });
@@ -80,11 +87,9 @@ gulp.task('static:watch', function() {
 
 gulp.task('lint', function() {
     return gulp.src(paths.allJs)
-        .pipe(plumber({errorHandler: notify.onError('Eslint error!')}))
+        .pipe(plumber())
         .pipe(eslint())
-        .pipe(eslint.format())
-        // This emits an error that is caught by plumber and then passed to notify
-        .pipe(eslint.failAfterError());
+        .pipe(eslint.format());
 });
 
 gulp.task('lint:watch', function() {

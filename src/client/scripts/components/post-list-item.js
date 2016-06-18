@@ -25,6 +25,9 @@ export default class PostListItem extends React.Component {
                     <a className='title' onClick={this.viewInIframe}>
                         {post.title}
                     </a>
+                    <span className='url'>
+                        {post.url}
+                    </span>
                 </div>
                 <div className='buttons'>
                     <Button variant='flat' className='iconButton'>

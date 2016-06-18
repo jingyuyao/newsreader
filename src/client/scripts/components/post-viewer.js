@@ -1,5 +1,6 @@
 import React from 'react';
 import Panel from 'muicss/lib/react/panel';
+import Divider from 'muicss/lib/react/divider';
 
 import Post from '../models/post';
 
@@ -28,6 +29,7 @@ export default class PostViewer extends React.Component {
                 <div className='mui--text-display1 title'>
                     {post.title}
                 </div>
+                <Divider/>
                 {viewer}
             </ContainerClass>
         );
