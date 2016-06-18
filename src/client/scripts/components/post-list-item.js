@@ -1,15 +1,17 @@
 import React from 'react';
+import Button from 'muicss/lib/react/button';
 import Panel from 'muicss/lib/react/panel';
 
+import {RENDER_MODES} from './post-viewer';
 import Post from '../models/post';
 
-class PostListItem extends React.Component {
+export default class PostListItem extends React.Component {
     constructor(props) {
         super(props);
 
         this.getContainerClass = this.getContainerClass.bind(this);
         this.getContainerProps = this.getContainerProps.bind(this);
-        this.fireSelectedEvent = this.fireSelectedEvent.bind(this);
+        this.viewInIframe = this.viewInIframe.bind(this);
     }
 
     render() {
@@ -19,12 +21,16 @@ class PostListItem extends React.Component {
 
         return (
             <ContainerClass {...containerProps}>
-                <div className='mui--text-title title'>
-                    {post.title}
+                <div className='contents'>
+                    <a className='title' onClick={this.viewInIframe}>
+                        {post.title}
+                    </a>
                 </div>
-                <span className='url'>
-                    {post.url}
-                </span>
+                <div className='buttons'>
+                    <Button variant='flat' className='iconButton'>
+                        <i className='material-icons'>comment</i>
+                    </Button>
+                </div>
             </ContainerClass>
         );
     }
@@ -35,13 +41,12 @@ class PostListItem extends React.Component {
 
     getContainerProps() {
         return {
-            className: 'postListItem',
-            onClick: this.fireSelectedEvent
+            className: 'postListItem'
         };
     }
 
-    fireSelectedEvent() {
-        this.props.selectedCallback(this.props.index);
+    viewInIframe() {
+        this.props.selectedCallback(this.props.index, RENDER_MODES.iframe);
     }
 }
 
@@ -50,5 +55,3 @@ PostListItem.propTypes = {
     post: React.PropTypes.instanceOf(Post).isRequired,
     selectedCallback: React.PropTypes.func.isRequired
 };
-
-export default PostListItem;

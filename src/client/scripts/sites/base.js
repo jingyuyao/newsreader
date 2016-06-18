@@ -5,7 +5,7 @@ import PostBrowser from '../components/post-browser';
 /*
  * Contains logic to change new feeds.
  */
-class SiteBase extends React.Component {
+export default class SiteBase extends React.Component {
     constructor(props) {
         super(props);
 
@@ -32,5 +32,3 @@ class SiteBase extends React.Component {
         return PostBrowser;
     }
 }
-
-export default SiteBase;

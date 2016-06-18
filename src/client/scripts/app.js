@@ -3,7 +3,7 @@ import Appbar from 'muicss/lib/react/appbar';
 
 import RedditSite from './sites/reddit';
 
-class App extends React.Component {
+export default class App extends React.Component {
     constructor(props) {
         super(props);
 
@@ -24,5 +24,3 @@ class App extends React.Component {
         );
     }
 }
-
-export default App;

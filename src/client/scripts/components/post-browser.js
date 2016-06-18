@@ -2,10 +2,10 @@ import React from 'react';
 import Container from 'muicss/lib/react/container';
 
 import PostList from './post-list';
-import PostViewer from './post-viewer';
+import PostViewer, {RENDER_MODES} from './post-viewer';
 import PostFeed from '../apis/post-feed';
 
-class PostBrowser extends React.Component {
+export default class PostBrowser extends React.Component {
     constructor(props) {
         super(props);
 
@@ -13,7 +13,8 @@ class PostBrowser extends React.Component {
             badFeed: false,
             hasMore: true,
             posts: [],
-            selectedIndex: 0
+            selectedPostIndex: 0,
+            selectedPostRenderMode: RENDER_MODES.iframe
         };
 
         // context binding
@@ -29,7 +30,7 @@ class PostBrowser extends React.Component {
         this.getPostListProps = this.getPostListProps.bind(this);
         this.getPostViewerClass = this.getPostViewerClass.bind(this);
         this.getPostViewerProps = this.getPostViewerProps.bind(this);
-        this.newSelectedIndex = this.newSelectedIndex.bind(this);
+        this.postSelectionChanged = this.postSelectionChanged.bind(this);
 
         this.initializePosts();
     }
@@ -104,8 +105,8 @@ class PostBrowser extends React.Component {
     getPostListProps() {
         return {
             posts: this.state.posts,
-            selectedIndex: this.state.selectedIndex,
-            newSelectedIndexCallback: this.newSelectedIndex
+            selectedPostIndex: this.state.selectedPostIndex,
+            postSelectionChangedCallback: this.postSelectionChanged
         };
     }
 
@@ -115,17 +116,19 @@ class PostBrowser extends React.Component {
 
     getPostViewerProps() {
         return {
-            post: this.state.posts[this.state.selectedIndex]
+            post: this.state.posts[this.state.selectedPostIndex],
+            renderMode: this.state.selectedPostRenderMode
         };
     }
 
-    newSelectedIndex(index) {
-        this.setState({selectedIndex: index});
+    postSelectionChanged(index, renderMode) {
+        this.setState({
+            selectedPostIndex: index,
+            selectedPostRenderMode: renderMode
+        });
     }
 }
 
 PostBrowser.propTypes = {
     postFeed: React.PropTypes.instanceOf(PostFeed).isRequired
 };
-
-export default PostBrowser;
