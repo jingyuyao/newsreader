@@ -1,5 +1,5 @@
 /* A (in)finite feed of posts.*/
-class PostFeed {
+export default class PostFeed {
     /* Boolean indicating whether there
      * are more posts to get.
      */
@@ -34,5 +34,3 @@ class PostFeed {
         return response.json();
     }
 }
-
-export default PostFeed;

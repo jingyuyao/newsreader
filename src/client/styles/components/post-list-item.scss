@@ -1,0 +1,14 @@
+.postListItem {
+  display: flex;
+
+  .contents {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+  }
+}

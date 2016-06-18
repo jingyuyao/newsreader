@@ -10,4 +10,17 @@
     display: flex;
     justify-content: center;
   }
+
+  /* Global app styles */
+
+  // Adds pointer to links without href
+  a {
+    cursor: pointer;
+  }
+
+  // Better styles for material icons in buttons
+  .iconButton {
+    display: flex;
+    padding: 0 10px 0 10px;
+  }
 }

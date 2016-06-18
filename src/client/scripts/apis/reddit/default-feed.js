@@ -1,7 +1,7 @@
 import PostFeed from '../post-feed';
 import RedditPost from '../../models/reddit/post';
 
-class DefaultFeed extends PostFeed {
+export default class DefaultFeed extends PostFeed {
     constructor(baseUri) {
         super();
 
@@ -25,5 +25,3 @@ class DefaultFeed extends PostFeed {
         });
     }
 }
-
-export default DefaultFeed;

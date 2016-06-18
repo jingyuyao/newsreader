@@ -2,7 +2,7 @@ import SiteBase from './base';
 import RedditApi from '../apis/reddit/api';
 import RedditPostBrowser from '../components/reddit/post-browser';
 
-class RedditSite extends SiteBase {
+export default class RedditSite extends SiteBase {
     getApi() {
         return new RedditApi();
     }
@@ -11,5 +11,3 @@ class RedditSite extends SiteBase {
         return RedditPostBrowser;
     }
 }
-
-export default RedditSite;
