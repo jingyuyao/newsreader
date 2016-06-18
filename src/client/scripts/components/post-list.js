@@ -43,9 +43,9 @@ export default class PostList extends React.Component {
         };
     }
 
-    selectedPostChanged(index, renderMode) {
+    selectedPostChanged(index, viewClass) {
         if (index != this.props.selectedPostIndex) {
-            this.props.postSelectionChangedCallback(index, renderMode);
+            this.props.postSelectionChangedCallback(index, viewClass);
         }
     }
 }

@@ -44,14 +44,14 @@ var clientTask = function(watch) {
                     { test: /\.css$/, loaders: ['style', 'css'] },
                     { test: /\.scss$/, loaders: ['style', 'css', 'sass'] }
                 ]
-            },
-            plugins: [
-                new webpack.optimize.UglifyJsPlugin({
-                    compress: {
-                        warnings: false
-                    }
-                })
-            ]
+            }
+            // plugins: [
+            //     new webpack.optimize.UglifyJsPlugin({
+            //         compress: {
+            //             warnings: false
+            //         }
+            //     })
+            // ]
         }).on('error', gutil.log))
         .pipe(gulp.dest(paths.clientBuildRoot));
 };

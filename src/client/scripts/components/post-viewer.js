@@ -1,19 +1,18 @@
 import React from 'react';
 import Panel from 'muicss/lib/react/panel';
-import Divider from 'muicss/lib/react/divider';
 
+import IframeView from './views/iframe-view';
 import Post from '../models/post';
 
-export const RENDER_MODES = {
-    iframe: 'iframe'
+export const VIEW_CLASSES = {
+    iframe: IframeView
 };
 
 export default class PostViewer extends React.Component {
     constructor(props) {
         super(props);
 
-        this.renderViewer = this.renderViewer.bind(this);
-        this.renderIframeViewer = this.renderIframeViewer.bind(this);
+        this.renderView = this.renderView.bind(this);
         this.getContainerClass = this.getContainerClass.bind(this);
         this.getContainerProps = this.getContainerProps.bind(this);
     }
@@ -22,29 +21,21 @@ export default class PostViewer extends React.Component {
         const post = this.props.post;
         const ContainerClass = this.getContainerClass();
         const containerProps = this.getContainerProps();
-        const viewer = this.renderViewer();
+        const view = this.renderView();
 
         return (
             <ContainerClass {...containerProps}>
                 <div className='mui--text-display1 title'>
                     {post.title}
                 </div>
-                <Divider/>
-                {viewer}
+                {view}
             </ContainerClass>
         );
     }
 
-    renderViewer() {
-        const renderMode = this.props.renderMode;
-
-        if (renderMode == RENDER_MODES.iframe) {
-            return this.renderIframeViewer();
-        }
-    }
-
-    renderIframeViewer() {
-        return <iframe className='iframeView' src={this.props.post.url} />;
+    renderView() {
+        const ViewClass = this.props.viewClass;
+        return <ViewClass post={this.props.post} />;
     }
 
     getContainerClass() {
@@ -60,5 +51,5 @@ export default class PostViewer extends React.Component {
 
 PostViewer.propTypes = {
     post: React.PropTypes.instanceOf(Post).isRequired,
-    renderMode: React.PropTypes.oneOf(Object.keys(RENDER_MODES).map(key => RENDER_MODES[key])).isRequired
+    viewClass: React.PropTypes.oneOf(Object.keys(VIEW_CLASSES).map(key => VIEW_CLASSES[key])).isRequired
 };

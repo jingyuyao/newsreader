@@ -1,8 +1,7 @@
 import React from 'react';
-import Button from 'muicss/lib/react/button';
 import Panel from 'muicss/lib/react/panel';
 
-import {RENDER_MODES} from './post-viewer';
+import {VIEW_CLASSES} from './post-viewer';
 import Post from '../models/post';
 
 export default class PostListItem extends React.Component {
@@ -29,11 +28,6 @@ export default class PostListItem extends React.Component {
                         {post.url}
                     </span>
                 </div>
-                <div className='buttons'>
-                    <Button variant='flat' className='iconButton'>
-                        <i className='material-icons'>comment</i>
-                    </Button>
-                </div>
             </ContainerClass>
         );
     }
@@ -49,7 +43,7 @@ export default class PostListItem extends React.Component {
     }
 
     viewInIframe() {
-        this.props.selectedCallback(this.props.index, RENDER_MODES.iframe);
+        this.props.selectedCallback(this.props.index, VIEW_CLASSES.iframe);
     }
 }
 

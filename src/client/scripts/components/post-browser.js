@@ -2,7 +2,7 @@ import React from 'react';
 import Container from 'muicss/lib/react/container';
 
 import PostList from './post-list';
-import PostViewer, {RENDER_MODES} from './post-viewer';
+import PostViewer, {VIEW_CLASSES} from './post-viewer';
 import PostFeed from '../apis/post-feed';
 
 export default class PostBrowser extends React.Component {
@@ -14,7 +14,7 @@ export default class PostBrowser extends React.Component {
             hasMore: true,
             posts: [],
             selectedPostIndex: 0,
-            selectedPostRenderMode: RENDER_MODES.iframe
+            selectedPostViewClass: VIEW_CLASSES.iframe
         };
 
         // context binding
@@ -117,14 +117,14 @@ export default class PostBrowser extends React.Component {
     getPostViewerProps() {
         return {
             post: this.state.posts[this.state.selectedPostIndex],
-            renderMode: this.state.selectedPostRenderMode
+            viewClass: this.state.selectedPostViewClass
         };
     }
 
-    postSelectionChanged(index, renderMode) {
+    postSelectionChanged(index, ViewClass) {
         this.setState({
             selectedPostIndex: index,
-            selectedPostRenderMode: renderMode
+            selectedPostViewClass: ViewClass
         });
     }
 }
