@@ -10,25 +10,18 @@ export default class SiteBase extends React.Component {
         super(props);
 
         this.getApi = this.getApi.bind(this);
-        this.getFeedBrowserClass = this.getFeedBrowserClass.bind(this);
 
         this.api = this.getApi();
-
         this.state = {
             postFeed: this.api.defaultFeed()
         };
     }
 
     render() {
-        const FeedBrowserClass = this.getFeedBrowserClass();
-        return <FeedBrowserClass postFeed={this.state.postFeed} />;
+        return <FeedBrowser postFeed={this.state.postFeed} />;
     }
 
     getApi() {
         throw 'Not implemented';
-    }
-
-    getFeedBrowserClass() {
-        return FeedBrowser;
     }
 }

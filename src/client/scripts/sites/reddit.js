@@ -1,13 +1,16 @@
-import SiteBase from './base';
+import React from 'react';
+
 import RedditApi from '../apis/reddit/api';
 import RedditFeedBrowser from '../components/reddit/feed-browser';
 
+import SiteBase from './base';
+
 export default class RedditSite extends SiteBase {
-    getApi() {
-        return new RedditApi();
+    render() {
+        return <RedditFeedBrowser postFeed={this.state.postFeed} />;
     }
 
-    getFeedBrowserClass() {
-        return RedditFeedBrowser;
+    getApi() {
+        return new RedditApi();
     }
 }

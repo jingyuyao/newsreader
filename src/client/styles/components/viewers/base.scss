@@ -1,11 +1,7 @@
-.postViewer {
+.baseViewer {
   display: flex;
   margin-left: 5px;
   flex: 1 1 auto;
   flex-direction: column;
   width: 0;
-
-  .iframeView {
-    flex: 1 1 auto;
-  }
 }

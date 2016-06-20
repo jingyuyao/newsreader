@@ -1,18 +1,18 @@
-import PostFeed from '../post-feed';
 import RedditPost from '../../models/reddit/post';
+
+import PostFeed from '../post-feed';
 
 export default class DefaultFeed extends PostFeed {
     constructor(baseUri) {
         super();
 
         this.baseUri = baseUri;
-        // Setting to undefined prevents the param from showing up
-        // on first load.
+        // Setting to undefined prevents the param from showing up on first load.
         this.after = undefined;
     }
 
     hasMore() {
-        // heh
+        // TODO: heh
         return true;
     }
 

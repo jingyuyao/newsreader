@@ -1,6 +1,7 @@
 import URI from 'urijs';
 
 import ApiBase from '../base';
+
 import DefaultFeed from './default-feed';
 
 export default class Reddit extends ApiBase {

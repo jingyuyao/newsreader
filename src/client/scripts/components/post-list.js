@@ -1,16 +1,15 @@
 import React from 'react';
 
-import PostListItem from './post-list-item';
 import Post from '../models/post';
+
+import PostListItem from './post-list-item';
 
 export default class PostList extends React.Component {
     constructor(props) {
         super(props);
 
         this.renderPostListItem = this.renderPostListItem.bind(this);
-        this.getPostListItemClass = this.getPostListItemClass.bind(this);
         this.getPostListItemProps = this.getPostListItemProps.bind(this);
-        this.selectedPostChanged = this.selectedPostChanged.bind(this);
     }
 
     render() {
@@ -23,35 +22,22 @@ export default class PostList extends React.Component {
         );
     }
 
-    renderPostListItem(post, index) {
-        const PostListItemClass = this.getPostListItemClass();
-        const postListItemProps = this.getPostListItemProps(post, index);
+    renderPostListItem(post) {
+        const postListItemProps = this.getPostListItemProps(post);
 
-        return <PostListItemClass {...postListItemProps} />;
+        return <PostListItem {...postListItemProps} />;
     }
 
-    getPostListItemClass() {
-        return PostListItem;
-    }
-
-    getPostListItemProps(post, index) {
+    getPostListItemProps(post) {
         return {
-            post: post,
             key: post.id,
-            index: index,
-            selectedCallback: this.selectedPostChanged
+            post: post,
+            changeViewerTo: this.props.changeViewerTo
         };
-    }
-
-    selectedPostChanged(index, viewClass) {
-        if (index != this.props.selectedPostIndex) {
-            this.props.postSelectionChangedCallback(index, viewClass);
-        }
     }
 }
 
 PostList.propTypes = {
-    selectedPostIndex: React.PropTypes.number.isRequired,
     posts: React.PropTypes.arrayOf(React.PropTypes.instanceOf(Post)).isRequired,
-    postSelectionChangedCallback: React.PropTypes.func.isRequired
+    changeViewerTo: React.PropTypes.func.isRequired
 };

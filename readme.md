@@ -31,6 +31,12 @@
 
 Static methods should come last.
 
+Class variable should be camelCase until it is used by JSX then it
+must be converted to CamelCase.
+
+Imports should be ordered by the "distance" of the target from the
+current class
+
 ### React components
 
 Render methods should come immediately after the constructor.

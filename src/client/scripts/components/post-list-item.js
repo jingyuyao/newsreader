@@ -1,25 +1,23 @@
 import React from 'react';
 import Panel from 'muicss/lib/react/panel';
 
-import {VIEW_CLASSES} from './post-viewer';
 import Post from '../models/post';
+
+import IframeViewer from './viewers/iframe';
 
 export default class PostListItem extends React.Component {
     constructor(props) {
         super(props);
 
-        this.getContainerClass = this.getContainerClass.bind(this);
-        this.getContainerProps = this.getContainerProps.bind(this);
+        this.getContainerCssClassName = this.getContainerCssClassName.bind(this);
         this.viewInIframe = this.viewInIframe.bind(this);
     }
 
     render() {
-        const ContainerClass = this.getContainerClass();
-        const containerProps = this.getContainerProps();
         const post = this.props.post;
 
         return (
-            <ContainerClass {...containerProps}>
+            <Panel className={this.getContainerCssClassName()}>
                 <div className='contents'>
                     <a className='title' onClick={this.viewInIframe}>
                         {post.title}
@@ -28,27 +26,22 @@ export default class PostListItem extends React.Component {
                         {post.url}
                     </span>
                 </div>
-            </ContainerClass>
+            </Panel>
         );
     }
 
-    getContainerClass() {
-        return Panel;
-    }
-
-    getContainerProps() {
-        return {
-            className: 'postListItem'
-        };
+    getContainerCssClassName() {
+        return 'postListItem';
     }
 
     viewInIframe() {
-        this.props.selectedCallback(this.props.index, VIEW_CLASSES.iframe);
+        const iframeViewer = <IframeViewer post={this.props.post}/>;
+
+        this.props.changeViewerTo(iframeViewer);
     }
 }
 
 PostListItem.propTypes = {
-    index: React.PropTypes.number.isRequired,
     post: React.PropTypes.instanceOf(Post).isRequired,
-    selectedCallback: React.PropTypes.func.isRequired
+    changeViewerTo: React.PropTypes.func.isRequired
 };

@@ -1,130 +1,85 @@
 import React from 'react';
 import Container from 'muicss/lib/react/container';
 
-import PostList from './post-list';
-import PostViewer, {VIEW_CLASSES} from './post-viewer';
 import PostFeed from '../apis/post-feed';
+
+import EmptyViewer from './viewers/empty';
+import PostList from './post-list';
 
 export default class FeedBrowser extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            badFeed: false,
-            hasMore: true,
             posts: [],
-            selectedPostIndex: 0,
-            selectedPostViewClass: VIEW_CLASSES.iframe
+            viewer: <EmptyViewer />
         };
 
-        // context binding
-        this.renderFeedBrowser = this.renderFeedBrowser.bind(this);
-        this.renderBadFeed = this.renderBadFeed.bind(this);
+        // context bindings
         this.renderInitialLoading = this.renderInitialLoading.bind(this);
+        this.renderEmptyFeed = this.renderEmptyFeed.bind(this);
+        this.renderFeedBrowser = this.renderFeedBrowser.bind(this);
         this.renderPostList = this.renderPostList.bind(this);
-        this.renderPostViewer = this.renderPostViewer.bind(this);
+
         this.initializePosts = this.initializePosts.bind(this);
-        this.hasBadFeed = this.hasBadFeed.bind(this);
-        this.hasPosts = this.hasPosts.bind(this);
-        this.getPostListClass = this.getPostListClass.bind(this);
-        this.getPostListProps = this.getPostListProps.bind(this);
-        this.getPostViewerClass = this.getPostViewerClass.bind(this);
-        this.getPostViewerProps = this.getPostViewerProps.bind(this);
-        this.postSelectionChanged = this.postSelectionChanged.bind(this);
+        this.changeViewerTo = this.changeViewerTo.bind(this);
 
         this.initializePosts();
     }
 
     render() {
-        if (this.hasPosts()) {
+        if (this.state.posts.length > 0) {
             return this.renderFeedBrowser();
-        }
-        else if (this.hasBadFeed()) {
-            return this.renderBadFeed();
-        }
-        else {
+        } else if (this.props.postFeed.hasMore()) {
             return this.renderInitialLoading();
+        } else {
+            return this.renderEmptyFeed();
         }
-    }
-
-    renderFeedBrowser() {
-        return (
-            <Container fluid={true} className='feedBrowser'>
-                {this.renderPostList()}
-                {this.renderPostViewer()}
-            </Container>
-        );
-    }
-
-    renderBadFeed() {
-        return <div>The feed is bad and you should feel bad.</div>;
     }
 
     renderInitialLoading() {
         return <div>Loading...</div>;
     }
 
+    renderEmptyFeed() {
+        return <div>The feed is empty.</div>;
+    }
+
+    renderFeedBrowser() {
+        return (
+            <Container className='feedBrowser' fluid={true}>
+                {this.renderPostList()}
+                {this.state.viewer}
+            </Container>
+        );
+    }
+
     renderPostList() {
-        const PostListClass = this.getPostListClass();
-        return <PostListClass {...this.getPostListProps()}/>;
+        return <PostList posts={this.state.posts} changeViewerTo={this.changeViewerTo}/>;
     }
 
-    renderPostViewer() {
-        const PostViewerClass = this.getPostViewerClass();
-        return <PostViewerClass {...this.getPostViewerProps()}/>;
-    }
-
+    /**
+     * Attempts to get the first batch of posts.
+     */
     initializePosts() {
         const postFeed = this.props.postFeed;
 
         if (postFeed.hasMore()) {
             postFeed.getMore().then(posts => {
-                this.setState({posts: posts});
-            });
-        }
-        else {
-            this.setState({
-                badFeed: true,
-                hasMore: false
+                this.setState({
+                    posts: posts
+                });
             });
         }
     }
 
-    hasBadFeed() {
-        return this.state.badFeed;
-    }
-
-    hasPosts() {
-        return this.state.posts.length;
-    }
-
-    getPostListClass() {
-        return PostList;
-    }
-
-    getPostListProps() {
-        return {
-            posts: this.state.posts,
-            selectedPostIndex: this.state.selectedPostIndex,
-            postSelectionChangedCallback: this.postSelectionChanged
-        };
-    }
-
-    getPostViewerClass() {
-        return PostViewer;
-    }
-
-    getPostViewerProps() {
-        return {
-            post: this.state.posts[this.state.selectedPostIndex],
-            viewClass: this.state.selectedPostViewClass
-        };
-    }
-
-    postSelectionChanged(index, ViewClass) {
+    /**
+     * Change the current post viewer.
+     * @param  {BaseViewer} newViewer  New viewer to display
+     */
+    changeViewerTo(newViewer) {
         this.setState({
-            selectedPostIndex: index,
-            selectedPostViewClass: ViewClass
+            viewer: newViewer
         });
     }
 }
