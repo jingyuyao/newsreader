@@ -1,3 +1,5 @@
+import 'whatwg-fetch';
+
 /* A (in)finite feed of posts.*/
 export default class PostFeed {
     /**
@@ -31,14 +33,14 @@ export default class PostFeed {
 
     /**
      * Resolve or reject the response depending on the status code.
-     * @param  {Response} response A response from the fetch api.
-     * @return {Promise}           Resolved or rejected reponse.
+     * @param  {Response} response  A response from the fetch api.
+     * @return {Response}           Return the response if status is good.
      */
     checkStatus(response) {
-        if (200 <= response.status < 300) {
-            return Promise.resolve(response);
+        if (response.status >= 200 && response.status < 300) {
+            return response;
         } else {
-            return Promise.reject(response);
+            throw response;
         }
     }
 

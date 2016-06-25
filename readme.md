@@ -25,6 +25,11 @@
   - routes/ - non-static path routing logic
   - views/ - templates written in pug
 
+## Testing
+
+Source files should be accompanied by a corresponding [name].spec.js 
+file in the __specs__ directory of the same level.
+
 ## Conventions
 
 ### General
@@ -63,3 +68,4 @@ Element id and classes should be camelCase.
 - Sass
 - SublimeLinter
 - SublimeLinter-contrib-eslint_d
+- Pug
