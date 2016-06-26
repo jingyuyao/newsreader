@@ -1,10 +1,10 @@
 import URI from 'urijs';
 
-import ApiBase from '../base';
+import DefaultFeed from '../feeds/reddit/default';
 
-import DefaultFeed from './default-feed';
+import AbstractApi from './abstract';
 
-export default class Reddit extends ApiBase {
+export default class Reddit extends AbstractApi {
     constructor() {
         super();
 

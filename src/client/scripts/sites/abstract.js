@@ -5,7 +5,7 @@ import FeedBrowser from '../components/feed-browser';
 /*
  * Contains logic to change new feeds.
  */
-export default class SiteBase extends React.Component {
+export default class AbstractSite extends React.Component {
     constructor(props) {
         super(props);
 
@@ -13,12 +13,12 @@ export default class SiteBase extends React.Component {
 
         this.api = this.getApi();
         this.state = {
-            postFeed: this.api.defaultFeed()
+            feed: this.api.defaultFeed()
         };
     }
 
     render() {
-        return <FeedBrowser postFeed={this.state.postFeed} />;
+        return <FeedBrowser feed={this.state.feed} />;
     }
 
     getApi() {

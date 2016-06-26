@@ -1,5 +1,5 @@
 /* A (in)finite feed of posts.*/
-export default class PostFeed {
+export default class AbstractFeed {
     /**
      * Check if there are more posts in this feed.
      * @return {Boolean} Whether there are more posts.

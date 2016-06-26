@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from 'muicss/lib/react/container';
 
-import PostFeed from '../apis/post-feed';
+import AbstractFeed from '../feeds/abstract';
 
 import EmptyViewer from './viewers/empty';
 import PostList from './post-list';
@@ -30,7 +30,7 @@ export default class FeedBrowser extends React.Component {
     render() {
         if (this.state.posts.length > 0) {
             return this.renderFeedBrowser();
-        } else if (this.props.postFeed.hasMore()) {
+        } else if (this.props.feed.hasMore()) {
             return this.renderInitialLoading();
         } else {
             return this.renderEmptyFeed();
@@ -62,10 +62,10 @@ export default class FeedBrowser extends React.Component {
      * Attempts to get the first batch of posts.
      */
     initializePosts() {
-        const postFeed = this.props.postFeed;
+        const feed = this.props.feed;
 
-        if (postFeed.hasMore()) {
-            postFeed.getMore().then(posts => {
+        if (feed.hasMore()) {
+            feed.getMore().then(posts => {
                 this.setState({
                     posts: posts
                 });
@@ -85,5 +85,5 @@ export default class FeedBrowser extends React.Component {
 }
 
 FeedBrowser.propTypes = {
-    postFeed: React.PropTypes.instanceOf(PostFeed).isRequired
+    feed: React.PropTypes.instanceOf(AbstractFeed).isRequired
 };

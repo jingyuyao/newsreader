@@ -1,9 +1,9 @@
 import {getJson} from '../../utils/fetch';
 import RedditPost from '../../models/reddit/post';
 
-import PostFeed from '../post-feed';
+import AbstractFeed from '../abstract';
 
-export default class DefaultFeed extends PostFeed {
+export default class DefaultFeed extends AbstractFeed {
     constructor(baseUri) {
         super();
 
