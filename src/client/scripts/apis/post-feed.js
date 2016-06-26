@@ -1,5 +1,3 @@
-import 'whatwg-fetch';
-
 /* A (in)finite feed of posts.*/
 export default class PostFeed {
     /**
@@ -17,39 +15,5 @@ export default class PostFeed {
      */
     getMore() {
         throw 'Not implemented';
-    }
-    
-    /**
-     * Fetch the url and parse the result as JSON if the call succeeds.
-     * Rejects with the response if the call fails (i.e error code >= 300)
-     * @param  {string} url  The url to fetch.
-     * @return {Promise}     The result of the fetch
-     */
-    getJson(url) {
-        return fetch(url)
-            .then(this.checkStatus)
-            .then(this.toJson);
-    }
-
-    /**
-     * Resolve or reject the response depending on the status code.
-     * @param  {Response} response  A response from the fetch api.
-     * @return {Response}           Return the response if status is good.
-     */
-    checkStatus(response) {
-        if (response.status >= 200 && response.status < 300) {
-            return response;
-        } else {
-            throw response;
-        }
-    }
-
-    /**
-     * Return the JSON representation of the reponse.
-     * @param  {Reponse} response A response from the fetch api.
-     * @return {Object}           A JSON representation of the reponse.
-     */
-    toJson(response) {
-        return response.json();
     }
 }

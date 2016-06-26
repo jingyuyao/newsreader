@@ -1,3 +1,4 @@
+import {getJson} from '../../utils/fetch';
 import RedditPost from '../../models/reddit/post';
 
 import PostFeed from '../post-feed';
@@ -19,9 +20,11 @@ export default class DefaultFeed extends PostFeed {
     getMore() {
         const url = this.baseUri.query({after: this.after}).toString();
 
-        return this.getJson(url).then(json => {
-            this.after = json.data.after;
-            return json.data.children.map(child => new RedditPost(child.data));
-        });
+        return getJson(url)
+            .then(response => {
+                this.after = response.data.after;
+                return response.data.children.map(child => new RedditPost(child.data));
+            })
+            .catch(() => []);
     }
 }
