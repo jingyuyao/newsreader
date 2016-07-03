@@ -19,11 +19,17 @@ export default class AbstractViewer extends React.Component {
         return (
             <Panel className='postViewer'>
                 <h1 className='title'>{this.props.title}</h1>
-                {this.renderContent()}
+                <div className='content'>
+                    {this.renderContent()}
+                </div>
             </Panel>
         );
     }
 
+    /**
+     * Renders the content of the view as a node.
+     * @return {React.Node} [description]
+     */
     renderContent() {
         throw 'Not implemented';
     }

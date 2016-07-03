@@ -23,12 +23,12 @@ export default class RedditFeed extends AbstractFeed {
         return getJson(url)
             .then(response => {
                 this.after = response.data.after;
-                return response.data.children.map(this.thingToPost);
+                return response.data.children.map(this.createPost);
             })
             .catch(() => []);
     }
 
-    thingToPost(thing) {
+    createPost(thing) {
         const data = thing.data;
         return new Post(data.id, data.title, data.url);
     }

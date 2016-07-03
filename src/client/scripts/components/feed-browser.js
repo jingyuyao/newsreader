@@ -21,7 +21,7 @@ export default class FeedBrowser extends React.Component {
 
         this.changeViewerTo = this.changeViewerTo.bind(this);
 
-        this.initializePosts();
+        this.loadMorePosts();
     }
 
     render() {
@@ -34,6 +34,18 @@ export default class FeedBrowser extends React.Component {
         }
     }
 
+    renderFeedBrowser() {
+        return (
+            <Container className='feedBrowser' fluid={true}>
+                <PostList
+                    posts={this.state.posts}
+                    changeViewerTo={this.changeViewerTo}
+                />
+                {this.state.viewer}
+            </Container>
+        );
+    }
+
     renderInitialLoading() {
         return <div>Loading...</div>;
     }
@@ -42,25 +54,17 @@ export default class FeedBrowser extends React.Component {
         return <div>The feed is empty.</div>;
     }
 
-    renderFeedBrowser() {
-        return (
-            <Container className='feedBrowser' fluid={true}>
-                <PostList posts={this.state.posts} changeViewerTo={this.changeViewerTo}/>
-                {this.state.viewer}
-            </Container>
-        );
-    }
-
     /**
-     * Attempts to get the first batch of posts.
+     * Attempts to load more posts from the feed.
      */
-    initializePosts() {
+    loadMorePosts() {
         const feed = this.props.feed;
 
         if (feed.hasMore()) {
             feed.getMore().then(posts => {
                 this.setState({
-                    posts: posts
+                    // TODO: deduplication
+                    posts: this.state.posts.concat(posts)
                 });
             });
         }

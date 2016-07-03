@@ -27,7 +27,7 @@
 
 ## Testing
 
-Source files should be accompanied by a corresponding [name].spec.js 
+Source files should be accompanied by a corresponding [name].spec.js
 file in the __specs__ directory of the same level.
 
 ## Conventions
@@ -45,7 +45,8 @@ current class
 ### React components
 
 Render methods should come immediately after the constructor.
-All non-static functions must bind to instance in constructor.
+All callback and functions that are passed to other components must
+be binded in the constructor.
 
 ### File naming
 

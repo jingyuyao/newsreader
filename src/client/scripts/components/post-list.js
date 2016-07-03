@@ -10,24 +10,18 @@ export default class PostList extends React.Component {
         changeViewerTo: React.PropTypes.func.isRequired
     }
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
-        const postListItems = this.props.posts.map(post => {
-            return (
-                <PostListItem
-                    key={post.id}
-                    post={post}
-                    changeViewerTo={this.props.changeViewerTo}
-                />
-            );
-        });
-
         return (
             <div className='postList'>
-                {postListItems}
+                {
+                    this.props.posts.map(post => (
+                        <PostListItem
+                            key={post.id}
+                            post={post}
+                            changeViewerTo={this.props.changeViewerTo}
+                        />
+                    ))
+                }
             </div>
         );
     }

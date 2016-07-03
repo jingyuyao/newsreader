@@ -5,7 +5,12 @@
   flex-direction: column;
   width: 0;
 
-  .iframeView {
+  .content {
+    display: flex;
     flex: 1 1 auto;
+
+    .iframeView {
+      flex: 1 1 auto;
+    }
   }
 }

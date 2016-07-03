@@ -14,30 +14,35 @@ export default class PostListItem extends React.Component {
     constructor(props) {
         super(props);
 
+        this.viewIn = this.viewIn.bind(this);
         this.viewInIframe = this.viewInIframe.bind(this);
     }
 
     render() {
-        const post = this.props.post;
-
         return (
             <Panel className='postListItem'>
                 <div className='contents'>
                     <a className='title' onClick={this.viewInIframe}>
-                        {post.title}
+                        {this.props.post.title}
                     </a>
                     <span className='url'>
-                        {post.url}
+                        {this.props.post.url}
                     </span>
                 </div>
             </Panel>
         );
     }
 
-    viewInIframe() {
-        const post = this.props.post;
-        const iframeViewer = <IframeViewer title={post.title} url={post.url}/>;
+    viewIn(component) {
+        this.props.changeViewerTo(component);
+    }
 
-        this.props.changeViewerTo(iframeViewer);
+    viewInIframe() {
+        this.viewIn(
+            <IframeViewer
+                title={this.props.post.title}
+                url={this.props.post.url}
+            />
+        );
     }
 }
