@@ -4,7 +4,7 @@ import RedditFeed from '../feeds/reddit';
 
 import AbstractApi from './abstract';
 
-export default class Reddit extends AbstractApi {
+export default class RedditApi extends AbstractApi {
     constructor() {
         super();
 
