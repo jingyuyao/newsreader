@@ -1,6 +1,6 @@
 import URI from 'urijs';
 
-import DefaultFeed from '../feeds/reddit/default';
+import RedditFeed from '../feeds/reddit';
 
 import AbstractApi from './abstract';
 
@@ -12,6 +12,6 @@ export default class Reddit extends AbstractApi {
     }
 
     defaultFeed() {
-        return new DefaultFeed(this.baseUri);
+        return new RedditFeed(this.baseUri);
     }
 }
