@@ -12,8 +12,6 @@ export default class BaseViewer extends React.Component {
 
         this.renderHeader = this.renderHeader.bind(this);
         this.renderContent = this.renderContent.bind(this);
-
-        this.getContainerCssClassName = this.getContainerCssClassName.bind(this);
     }
 
     render() {

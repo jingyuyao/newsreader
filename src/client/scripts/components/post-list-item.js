@@ -9,7 +9,6 @@ export default class PostListItem extends React.Component {
     constructor(props) {
         super(props);
 
-        this.getContainerCssClassName = this.getContainerCssClassName.bind(this);
         this.viewInIframe = this.viewInIframe.bind(this);
     }
 
@@ -17,7 +16,7 @@ export default class PostListItem extends React.Component {
         const post = this.props.post;
 
         return (
-            <Panel className={this.getContainerCssClassName()}>
+            <Panel className='postListItem'>
                 <div className='contents'>
                     <a className='title' onClick={this.viewInIframe}>
                         {post.title}
@@ -28,10 +27,6 @@ export default class PostListItem extends React.Component {
                 </div>
             </Panel>
         );
-    }
-
-    getContainerCssClassName() {
-        return 'postListItem';
     }
 
     viewInIframe() {

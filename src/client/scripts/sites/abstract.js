@@ -1,27 +1,16 @@
-import React from 'react';
-
-import FeedBrowser from '../components/feed-browser';
-
 /*
- * Contains logic to change new feeds.
+ * Contains site level logic like picking the right API and feed.
  */
-export default class AbstractSite extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.getApi = this.getApi.bind(this);
-
-        this.api = this.getApi();
-        this.state = {
-            feed: this.api.defaultFeed()
-        };
+export default class AbstractSite {
+    /**
+     * Create an site with the given api.
+     * @param  {AbstractApi} api An instance of AbstractApi
+     */
+    constructor(api) {
+        this.api = api;
     }
 
-    render() {
-        return <FeedBrowser feed={this.state.feed} />;
-    }
-
-    getApi() {
+    getCurrentFeed() {
         throw 'Not implemented';
     }
 }

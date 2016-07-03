@@ -15,13 +15,6 @@ export default class FeedBrowser extends React.Component {
             viewer: <EmptyViewer />
         };
 
-        // context bindings
-        this.renderInitialLoading = this.renderInitialLoading.bind(this);
-        this.renderEmptyFeed = this.renderEmptyFeed.bind(this);
-        this.renderFeedBrowser = this.renderFeedBrowser.bind(this);
-        this.renderPostList = this.renderPostList.bind(this);
-
-        this.initializePosts = this.initializePosts.bind(this);
         this.changeViewerTo = this.changeViewerTo.bind(this);
 
         this.initializePosts();
@@ -48,14 +41,10 @@ export default class FeedBrowser extends React.Component {
     renderFeedBrowser() {
         return (
             <Container className='feedBrowser' fluid={true}>
-                {this.renderPostList()}
+                <PostList posts={this.state.posts} changeViewerTo={this.changeViewerTo}/>
                 {this.state.viewer}
             </Container>
         );
-    }
-
-    renderPostList() {
-        return <PostList posts={this.state.posts} changeViewerTo={this.changeViewerTo}/>;
     }
 
     /**

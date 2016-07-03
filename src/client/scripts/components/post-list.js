@@ -7,33 +7,24 @@ import PostListItem from './post-list-item';
 export default class PostList extends React.Component {
     constructor(props) {
         super(props);
-
-        this.renderPostListItem = this.renderPostListItem.bind(this);
-        this.getPostListItemProps = this.getPostListItemProps.bind(this);
     }
 
     render() {
-        const postListItems = this.props.posts.map(this.renderPostListItem);
-        
+        const postListItems = this.props.posts.map(post => {
+            return (
+                <PostListItem
+                    key={post.id}
+                    post={post}
+                    changeViewerTo={this.props.changeViewerTo}
+                />
+            );
+        });
+
         return (
             <div className='postList'>
                 {postListItems}
             </div>
         );
-    }
-
-    renderPostListItem(post) {
-        const postListItemProps = this.getPostListItemProps(post);
-
-        return <PostListItem {...postListItemProps} />;
-    }
-
-    getPostListItemProps(post) {
-        return {
-            key: post.id,
-            post: post,
-            changeViewerTo: this.props.changeViewerTo
-        };
     }
 }
 
