@@ -6,7 +6,7 @@ import Post from '../../models/post';
 /**
  * Provides skeletons for all post viewers.
  */
-export default class BaseViewer extends React.Component {
+export default class AbstractViewer extends React.Component {
     constructor(props) {
         super(props);
 
@@ -36,10 +36,10 @@ export default class BaseViewer extends React.Component {
     }
 
     getContainerCssClassName() {
-        return 'baseViewer';
+        return 'abstractViewer';
     }
 }
 
-BaseViewer.propTypes = {
+AbstractViewer.propTypes = {
     post: React.PropTypes.instanceOf(Post).isRequired
 };

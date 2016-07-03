@@ -1,8 +1,8 @@
 import React from 'react';
 
-import BaseViewer from './base';
+import AbstractViewer from './abstract';
 
-export default class EmptyViewer extends BaseViewer {
+export default class EmptyViewer extends AbstractViewer {
     renderHeader() {
         return <div className='mui--text-display1 title'>Please select a post</div>;
     }

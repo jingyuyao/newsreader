@@ -64,7 +64,7 @@ export default class FeedBrowser extends React.Component {
 
     /**
      * Change the current post viewer.
-     * @param  {BaseViewer} newViewer  New viewer to display
+     * @param  {AbstractViewer} newViewer  New viewer to display
      */
     changeViewerTo(newViewer) {
         this.setState({
