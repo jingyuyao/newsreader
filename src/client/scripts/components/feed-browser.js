@@ -3,16 +3,20 @@ import Container from 'muicss/lib/react/container';
 
 import AbstractFeed from '../feeds/abstract';
 
-import EmptyViewer from './viewers/empty';
+import emptyViewer from './viewers/empty';
 import PostList from './post-list';
 
 export default class FeedBrowser extends React.Component {
+    static propTypes = {
+        feed: React.PropTypes.instanceOf(AbstractFeed).isRequired
+    }
+
     constructor(props) {
         super(props);
 
         this.state = {
             posts: [],
-            viewer: <EmptyViewer />
+            viewer: emptyViewer
         };
 
         this.changeViewerTo = this.changeViewerTo.bind(this);
@@ -72,7 +76,3 @@ export default class FeedBrowser extends React.Component {
         });
     }
 }
-
-FeedBrowser.propTypes = {
-    feed: React.PropTypes.instanceOf(AbstractFeed).isRequired
-};

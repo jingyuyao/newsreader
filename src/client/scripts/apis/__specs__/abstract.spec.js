@@ -1,5 +1,3 @@
-/* global describe, it, expect */
-
 import AbstractApi from '../abstract';
 
 describe('Base api', () => {

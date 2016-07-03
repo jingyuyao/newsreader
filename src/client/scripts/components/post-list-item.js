@@ -6,6 +6,11 @@ import Post from '../models/post';
 import IframeViewer from './viewers/iframe';
 
 export default class PostListItem extends React.Component {
+    static propTypes = {
+        post: React.PropTypes.instanceOf(Post).isRequired,
+        changeViewerTo: React.PropTypes.func.isRequired
+    }
+
     constructor(props) {
         super(props);
 
@@ -30,13 +35,9 @@ export default class PostListItem extends React.Component {
     }
 
     viewInIframe() {
-        const iframeViewer = <IframeViewer post={this.props.post}/>;
+        const post = this.props.post;
+        const iframeViewer = <IframeViewer title={post.title} url={post.url}/>;
 
         this.props.changeViewerTo(iframeViewer);
     }
 }
-
-PostListItem.propTypes = {
-    post: React.PropTypes.instanceOf(Post).isRequired,
-    changeViewerTo: React.PropTypes.func.isRequired
-};

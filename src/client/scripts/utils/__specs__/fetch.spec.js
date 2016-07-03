@@ -1,5 +1,3 @@
-/* global describe, it, expect, afterEach */
-
 import {getJson} from '../fetch';
 
 // must be imported after fetch

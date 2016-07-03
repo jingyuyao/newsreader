@@ -5,6 +5,11 @@ import Post from '../models/post';
 import PostListItem from './post-list-item';
 
 export default class PostList extends React.Component {
+    static propTypes = {
+        posts: React.PropTypes.arrayOf(React.PropTypes.instanceOf(Post)).isRequired,
+        changeViewerTo: React.PropTypes.func.isRequired
+    }
+
     constructor(props) {
         super(props);
     }
@@ -27,8 +32,3 @@ export default class PostList extends React.Component {
         );
     }
 }
-
-PostList.propTypes = {
-    posts: React.PropTypes.arrayOf(React.PropTypes.instanceOf(Post)).isRequired,
-    changeViewerTo: React.PropTypes.func.isRequired
-};

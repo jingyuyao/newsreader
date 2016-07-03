@@ -1,5 +1,3 @@
-/* global describe, it, expect */
-
 import AbstractFeed from '../abstract';
 
 describe('AbstractFeed', () => {
