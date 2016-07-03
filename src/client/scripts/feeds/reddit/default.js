@@ -1,5 +1,5 @@
 import {getJson} from '../../utils/fetch';
-import RedditPost from '../../models/reddit/post';
+import Post from '../../models/post';
 
 import AbstractFeed from '../abstract';
 
@@ -23,8 +23,13 @@ export default class DefaultFeed extends AbstractFeed {
         return getJson(url)
             .then(response => {
                 this.after = response.data.after;
-                return response.data.children.map(child => new RedditPost(child.data));
+                return response.data.children.map(this.thingToPost);
             })
             .catch(() => []);
+    }
+
+    thingToPost(thing) {
+        const data = thing.data;
+        return new Post(data.id, data.title, data.url);
     }
 }
