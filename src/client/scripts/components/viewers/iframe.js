@@ -8,7 +8,7 @@ export default class IframeViewer extends AbstractViewer {
     }, AbstractViewer.propTypes)
 
     renderContent() {
-        // TODO: What happens when X-Frame-Options blocks the request?
+        // TODO: handle X-Frame-Options and sanitize url
         return <iframe className='iframeView' src={this.props.url} />;
     }
 }

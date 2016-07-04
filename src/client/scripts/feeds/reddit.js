@@ -1,5 +1,5 @@
 import {getJson} from '../utils/fetch';
-import Post from '../models/post';
+import {Post, PostBuilder} from '../models/post';
 
 import AbstractFeed from './abstract';
 
@@ -30,6 +30,9 @@ export default class RedditFeed extends AbstractFeed {
 
     createPost(thing) {
         const data = thing.data;
-        return new Post(data.id, data.title, data.url);
+        // TODO: change primary view depending on thing's kind
+        return new PostBuilder(data.id, data.title, Post.VIEWS.IFRAME)
+            .iframe(data.url)
+            .build();
     }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import Panel from 'muicss/lib/react/panel';
 
-import Post from '../models/post';
+import {Post} from '../models/post';
 
 import IframeViewer from './viewers/iframe';
 
@@ -22,26 +22,39 @@ export default class PostListItem extends React.Component {
         return (
             <Panel className='postListItem'>
                 <div className='contents'>
-                    <a className='title' onClick={this.viewInIframe}>
+                    <a className='title' onClick={this.getDefaultViewFn()}>
                         {this.props.post.title}
                     </a>
-                    <span className='url'>
-                        {this.props.post.url}
-                    </span>
                 </div>
             </Panel>
         );
     }
 
-    viewIn(component) {
-        this.props.changeViewerTo(component);
+    /**
+     * Get the handler for the default view.
+     * @return {Function} The handler to call for the default view
+     */
+    getDefaultViewFn() {
+        const primaryView = this.props.post.primaryView;
+
+        if (primaryView == Post.VIEWS.IFRAME) {
+            return this.viewInIframe;
+        }
+    }
+
+    /**
+     * Fire the view changed handler to display the new view.
+     * @param  {Element} component New react element as the view
+     */
+    viewIn(newViewer) {
+        this.props.changeViewerTo(newViewer);
     }
 
     viewInIframe() {
         this.viewIn(
             <IframeViewer
                 title={this.props.post.title}
-                url={this.props.post.url}
+                url={this.props.post.iframeUrl}
             />
         );
     }
