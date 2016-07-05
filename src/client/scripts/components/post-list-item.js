@@ -16,6 +16,8 @@ export default class PostListItem extends React.Component {
 
         this.viewIn = this.viewIn.bind(this);
         this.viewInIframe = this.viewInIframe.bind(this);
+
+        this.viewFnMap = this.setUpViewFnMap();
     }
 
     render() {
@@ -31,15 +33,22 @@ export default class PostListItem extends React.Component {
     }
 
     /**
+     * Sets up the map between a view of a post to its handler function.
+     */
+    setUpViewFnMap() {
+        const map = new Map();
+
+        map.set(Post.VIEWS.IFRAME, this.viewInIframe);
+
+        return map;
+    }
+
+    /**
      * Get the handler for the default view.
      * @return {Function} The handler to call for the default view
      */
     getDefaultViewFn() {
-        const primaryView = this.props.post.primaryView;
-
-        if (primaryView == Post.VIEWS.IFRAME) {
-            return this.viewInIframe;
-        }
+        return this.viewFnMap.get(this.props.post.primaryView);
     }
 
     /**
