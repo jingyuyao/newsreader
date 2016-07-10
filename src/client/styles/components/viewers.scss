@@ -13,13 +13,13 @@
       flex: 1 1 auto;
     }
 
+    // Image containment technique: http://stackoverflow.com/a/18606996
+    // background-image supplied by js
     .imageView {
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-size: contain;
       flex: 1 1 auto;
-
-      // TODO: Fix oversized vertical images
-      img {
-        max-width: 100%;
-      }
     }
   }
 }

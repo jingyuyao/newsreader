@@ -10,10 +10,11 @@ export default class ImageViewer extends AbstractViewer {
 
     renderContent() {
         // TODO: handle bad url
-        return (
-            <div className='imageView'>
-                <img src={this.props.url}/>
-            </div>
-        );
+        // TODO: change div into an anchor?
+        // Image containment technique: http://stackoverflow.com/a/18606996
+        const backgroundImageStyle = {
+            backgroundImage: `url(${this.props.url})`
+        };
+        return <div className='imageView' style={backgroundImageStyle}/>;
     }
 }
