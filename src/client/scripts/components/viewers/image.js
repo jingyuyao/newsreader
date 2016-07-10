@@ -10,6 +10,10 @@ export default class ImageViewer extends AbstractViewer {
 
     renderContent() {
         // TODO: handle bad url
-        return <img className='imageView' src={this.props.url}/>;
+        return (
+            <div className='imageView'>
+                <img src={this.props.url}/>
+            </div>
+        );
     }
 }
