@@ -4,6 +4,7 @@ import Panel from 'muicss/lib/react/panel';
 import {Post} from '../models/post';
 
 import IframeViewer from './viewers/iframe';
+import ImageViewer from './viewers/image';
 
 export default class PostListItem extends React.Component {
     static propTypes = {
@@ -16,6 +17,7 @@ export default class PostListItem extends React.Component {
 
         this.viewIn = this.viewIn.bind(this);
         this.viewInIframe = this.viewInIframe.bind(this);
+        this.viewInImage = this.viewInImage.bind(this);
 
         this.viewFnMap = this.setUpViewFnMap();
     }
@@ -27,6 +29,11 @@ export default class PostListItem extends React.Component {
                     <a className='title' onClick={this.getDefaultViewFn()}>
                         {this.props.post.title}
                     </a>
+                    { do {
+                        if (this.props.post.secondaryText) {
+                            <span>{this.props.post.secondaryText}</span>;
+                        }
+                    }}
                 </div>
             </Panel>
         );
@@ -39,6 +46,7 @@ export default class PostListItem extends React.Component {
         const map = new Map();
 
         map.set(Post.VIEWS.IFRAME, this.viewInIframe);
+        map.set(Post.VIEWS.IMAGE, this.viewInImage);
 
         return map;
     }
@@ -64,6 +72,15 @@ export default class PostListItem extends React.Component {
             <IframeViewer
                 title={this.props.post.title}
                 url={this.props.post.iframeUrl}
+            />
+        );
+    }
+
+    viewInImage() {
+        this.viewIn(
+            <ImageViewer
+                title={this.props.post.title}
+                url={this.props.post.imageUrl}
             />
         );
     }

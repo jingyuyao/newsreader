@@ -8,9 +8,16 @@
   .content {
     display: flex;
     flex: 1 1 auto;
+    flex-direction: column;
 
     .iframeView {
       flex: 1 1 auto;
+    }
+
+    .imageView {
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
     }
   }
 }
