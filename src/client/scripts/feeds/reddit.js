@@ -92,7 +92,7 @@ class RedditPostCreater {
                 .secondaryText(data.url)
                 .build();
         },
-    ];
+    ]
 
     /**
      * Create a list of Post from a list of things

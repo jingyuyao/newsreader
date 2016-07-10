@@ -6,7 +6,7 @@ import Panel from 'muicss/lib/react/panel';
  */
 export default class AbstractViewer extends React.Component {
     static propTypes = {
-        title: React.PropTypes.string.isRequired
+        title: React.PropTypes.string.isRequired,
     }
 
     constructor(props) {
