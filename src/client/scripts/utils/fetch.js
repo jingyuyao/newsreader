@@ -1,5 +1,5 @@
+import 'core-js/shim';
 import 'whatwg-fetch';
-import 'es6-promise';
 
 export default fetch;
 
